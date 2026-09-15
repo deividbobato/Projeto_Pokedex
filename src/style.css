@@ -1,7 +1,7 @@
-/* Fontes locais: a página também funciona sem internet. */
+/* Fontes locais */
 @font-face {
   font-family: "Pixel";
-  src: url("assets/pixel.ttf") format("truetype");
+  src: url("imagens/pixel.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("assets/poppins.ttf") format("truetype");
+  src: url("imagens/poppins.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -17,12 +17,13 @@
 
 @font-face {
   font-family: "PixelTitulo";
-  src: url("assets/pixelify.ttf") format("truetype");
+  src: url("imagens/pixelify.ttf") format("truetype");
   font-style: normal;
   font-weight: 600;
   font-display: swap;
 }
 
+/* Cores */
 :root {
   --borda: #202031;
   --azul: #4145bf;
@@ -48,49 +49,25 @@ body {
   font-family: "Poppins", Arial, sans-serif;
 }
 
-/* O cenário é uma imagem independente dos campos e botões. */
+/* Imagem de fundo */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgb(17 27 49 / 8%) 0%, rgb(15 22 37 / 30%) 45%, rgb(9 15 26 / 73%) 100%),
-    url("assets/cenario.png") center center / cover no-repeat;
+    linear-gradient(
+      180deg,
+      rgb(17 27 49 / 8%) 0%,
+      rgb(15 22 37 / 30%) 45%,
+      rgb(9 15 26 / 73%) 100%
+    ),
+    url("imagens/cenario.png") center / cover no-repeat;
   image-rendering: pixelated;
   filter: saturate(0.7);
 }
 
-.cabecalho {
-  position: absolute;
-  top: 22px;
-  left: 25px;
-  z-index: 2;
-}
-
-.marca {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #fff;
-  text-decoration: none;
-}
-
-.marca img {
-  width: 50px;
-  height: 50px;
-  filter: drop-shadow(3px 3px 0 rgb(23 28 45 / 65%));
-  image-rendering: pixelated;
-}
-
-.marca span {
-  font-family: "Pixel", monospace;
-  font-size: 19px;
-  line-height: 1.5;
-  text-shadow: 3px 3px 0 #171d2f;
-}
-
-/* Em telas grandes, a composição segue o enquadramento da referência. */
+/* Posição do conjunto */
 .pagina {
   display: grid;
   place-items: center;
@@ -106,6 +83,7 @@ body::before {
   width: min(100%, 550px);
 }
 
+/* Logo Pokémon */
 .logo-pokemon {
   display: block;
   position: relative;
@@ -116,6 +94,7 @@ body::before {
   image-rendering: pixelated;
 }
 
+/* Caixa branca */
 .cartao {
   position: relative;
   width: min(100%, 454px);
@@ -125,17 +104,21 @@ body::before {
   box-shadow: 9px 10px 0 rgb(10 14 20 / 72%);
 }
 
-/* Quatro quadradinhos azuis nos cantos da moldura. */
+/* Quadradinhos azuis nos cantos */
 .cartao::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(var(--azul), var(--azul)) left top / 12px 12px no-repeat,
-    linear-gradient(var(--azul), var(--azul)) right top / 12px 12px no-repeat,
-    linear-gradient(var(--azul), var(--azul)) left bottom / 12px 12px no-repeat,
-    linear-gradient(var(--azul), var(--azul)) right bottom / 12px 12px no-repeat;
+    linear-gradient(var(--azul), var(--azul))
+      left top / 12px 12px no-repeat,
+    linear-gradient(var(--azul), var(--azul))
+      right top / 12px 12px no-repeat,
+    linear-gradient(var(--azul), var(--azul))
+      left bottom / 12px 12px no-repeat,
+    linear-gradient(var(--azul), var(--azul))
+      right bottom / 12px 12px no-repeat;
 }
 
 h1 {
@@ -147,6 +130,7 @@ h1 {
   line-height: 1.18;
 }
 
+/* Formulário */
 .formulario {
   display: flex;
   flex-direction: column;
@@ -191,6 +175,7 @@ input:focus {
   background: #f5f4ff;
 }
 
+/* Botão de entrada */
 .botao-entrar {
   display: flex;
   align-items: center;
@@ -209,7 +194,10 @@ input:focus {
   font-size: 14px;
   line-height: 1.5;
   cursor: pointer;
-  transition: transform 100ms ease, box-shadow 100ms ease, background-color 100ms ease;
+  transition:
+    transform 100ms ease,
+    box-shadow 100ms ease,
+    background-color 100ms ease;
 }
 
 .seta {
@@ -226,6 +214,7 @@ input:focus {
   box-shadow: 1px 1px 0 var(--borda);
 }
 
+/* Links da conta */
 .links {
   display: flex;
   flex-wrap: wrap;
@@ -256,74 +245,13 @@ input:focus {
 }
 
 a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
+button:focus-visible {
   outline: 3px solid #6267e5;
   outline-offset: 5px;
 }
 
-.ajuda {
-  position: fixed;
-  right: 15px;
-  bottom: 10px;
-  z-index: 3;
-}
-
-.ajuda summary {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 2px solid #65666a;
-  border-radius: 50%;
-  background: #373a3d;
-  box-shadow: 0 3px 0 rgb(0 0 0 / 35%);
-  color: #f4f3ec;
-  font: 28px/1 Arial, sans-serif;
-  list-style: none;
-  cursor: pointer;
-}
-
-.ajuda summary::-webkit-details-marker {
-  display: none;
-}
-
-.ajuda-texto {
-  position: absolute;
-  right: 0;
-  bottom: 57px;
-  width: min(285px, calc(100vw - 36px));
-  padding: 18px;
-  border: 3px solid var(--borda);
-  background: #fff;
-  box-shadow: 5px 5px 0 var(--borda);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.ajuda-texto p {
-  margin: 8px 0 0;
-}
-
+/* Ajustes para celular */
 @media (max-width: 600px) {
-  .cabecalho {
-    top: 18px;
-    left: 18px;
-  }
-
-  .marca {
-    gap: 9px;
-  }
-
-  .marca img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .marca span {
-    font-size: 15px;
-  }
-
   .pagina {
     padding: 112px 24px 76px;
   }
@@ -356,6 +284,7 @@ summary:focus-visible {
   }
 }
 
+/* Ajustes para telas muito pequenas */
 @media (max-width: 350px) {
   .pagina {
     padding-inline: 17px;
@@ -371,6 +300,7 @@ summary:focus-visible {
   }
 }
 
+/* Respeita a preferência por menos movimento */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
