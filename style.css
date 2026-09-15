@@ -1,0 +1,380 @@
+/* Fontes locais: a página também funciona sem internet. */
+@font-face {
+  font-family: "Pixel";
+  src: url("assets/pixel.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("assets/poppins.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PixelTitulo";
+  src: url("assets/pixelify.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --borda: #202031;
+  --azul: #4145bf;
+  --amarelo: #ffe000;
+  --campo: #eeedff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  isolation: isolate;
+  margin: 0;
+  min-width: 280px;
+  min-height: 100vh;
+  color: var(--borda);
+  background: #397da4;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* O cenário é uma imagem independente dos campos e botões. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgb(17 27 49 / 8%) 0%, rgb(15 22 37 / 30%) 45%, rgb(9 15 26 / 73%) 100%),
+    url("assets/cenario.png") center center / cover no-repeat;
+  image-rendering: pixelated;
+  filter: saturate(0.7);
+}
+
+.cabecalho {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  z-index: 2;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.marca img {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(3px 3px 0 rgb(23 28 45 / 65%));
+  image-rendering: pixelated;
+}
+
+.marca span {
+  font-family: "Pixel", monospace;
+  font-size: 19px;
+  line-height: 1.5;
+  text-shadow: 3px 3px 0 #171d2f;
+}
+
+/* Em telas grandes, a composição segue o enquadramento da referência. */
+.pagina {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: max(108px, calc((100svh - 480px) / 2)) 24px 40px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 550px);
+}
+
+.logo-pokemon {
+  display: block;
+  position: relative;
+  width: min(100%, 520px);
+  height: 170px;
+  object-fit: fill;
+  margin: 0 0 -25px;
+  image-rendering: pixelated;
+}
+
+.cartao {
+  position: relative;
+  width: min(100%, 454px);
+  padding: 36px 30px 27px;
+  border: 6px solid var(--borda);
+  background: #fff;
+  box-shadow: 9px 10px 0 rgb(10 14 20 / 72%);
+}
+
+/* Quatro quadradinhos azuis nos cantos da moldura. */
+.cartao::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--azul), var(--azul)) left top / 12px 12px no-repeat,
+    linear-gradient(var(--azul), var(--azul)) right top / 12px 12px no-repeat,
+    linear-gradient(var(--azul), var(--azul)) left bottom / 12px 12px no-repeat,
+    linear-gradient(var(--azul), var(--azul)) right bottom / 12px 12px no-repeat;
+}
+
+h1 {
+  margin: 0 0 29px;
+  text-align: center;
+  font-family: "PixelTitulo", monospace;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-family: "PixelTitulo", monospace;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.125;
+  color: #555463;
+}
+
+input {
+  width: 100%;
+  height: 57px;
+  padding: 12px 16px;
+  border: 2px solid #34323f;
+  border-radius: 0;
+  outline-offset: 3px;
+  background: var(--campo);
+  color: var(--borda);
+  font: inherit;
+  font-size: 18px;
+  transition: background-color 120ms ease;
+}
+
+input::placeholder {
+  color: #858394;
+  opacity: 1;
+}
+
+input:focus {
+  outline: 3px solid var(--azul);
+  background: #f5f4ff;
+}
+
+.botao-entrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  width: 100%;
+  min-height: 55px;
+  margin-top: 13px;
+  padding: 15px 12px;
+  border: 2px solid var(--borda);
+  border-radius: 0;
+  background: var(--amarelo);
+  color: #181c25;
+  box-shadow: 5px 5px 0 var(--borda);
+  font-family: "Pixel", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 100ms ease, background-color 100ms ease;
+}
+
+.seta {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.botao-entrar:hover {
+  background: #ffea3a;
+}
+
+.botao-entrar:active {
+  transform: translate(4px, 4px);
+  box-shadow: 1px 1px 0 var(--borda);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px 14px;
+  margin-top: 15px;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: #5f5e70;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.links .criar-conta {
+  color: #4448ae;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #6267e5;
+  outline-offset: 5px;
+}
+
+.ajuda {
+  position: fixed;
+  right: 15px;
+  bottom: 10px;
+  z-index: 3;
+}
+
+.ajuda summary {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid #65666a;
+  border-radius: 50%;
+  background: #373a3d;
+  box-shadow: 0 3px 0 rgb(0 0 0 / 35%);
+  color: #f4f3ec;
+  font: 28px/1 Arial, sans-serif;
+  list-style: none;
+  cursor: pointer;
+}
+
+.ajuda summary::-webkit-details-marker {
+  display: none;
+}
+
+.ajuda-texto {
+  position: absolute;
+  right: 0;
+  bottom: 57px;
+  width: min(285px, calc(100vw - 36px));
+  padding: 18px;
+  border: 3px solid var(--borda);
+  background: #fff;
+  box-shadow: 5px 5px 0 var(--borda);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ajuda-texto p {
+  margin: 8px 0 0;
+}
+
+@media (max-width: 600px) {
+  .cabecalho {
+    top: 18px;
+    left: 18px;
+  }
+
+  .marca {
+    gap: 9px;
+  }
+
+  .marca img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .marca span {
+    font-size: 15px;
+  }
+
+  .pagina {
+    padding: 112px 24px 76px;
+  }
+
+  .logo-pokemon {
+    height: auto;
+    aspect-ratio: 3 / 1;
+    margin-bottom: -12px;
+  }
+
+  .cartao {
+    padding: 31px 23px 22px;
+    border-width: 5px;
+    box-shadow: 7px 8px 0 rgb(10 14 20 / 72%);
+  }
+
+  h1 {
+    margin-bottom: 27px;
+    font-size: 26px;
+  }
+
+  .links {
+    gap: 0 10px;
+    margin-top: 17px;
+  }
+
+  .links a {
+    min-height: 44px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 350px) {
+  .pagina {
+    padding-inline: 17px;
+  }
+
+  .cartao {
+    padding-inline: 17px;
+  }
+
+  .links {
+    justify-content: center;
+    gap: 0 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

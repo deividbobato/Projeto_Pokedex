@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#346a8b">
+  <meta name="description" content="Tela de entrada da Pokédex em pixel art.">
+  <title>Pokédex | Entrar</title>
+  <link rel="icon" href="assets/pokedex.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="pagina">
+    <div class="login">
+      <img
+        class="logo-pokemon"
+        src="assets/pokemon-logo.png"
+        alt="Pokémon"
+        width="520"
+        height="192"
+      >
+
+      <section class="cartao" aria-labelledby="titulo-login">
+        <h1 id="titulo-login">Entrar</h1>
+
+        <form class="formulario" aria-label="Entrar na Pokédex">
+          <div class="campo">
+            <label for="usuario">USUÁRIO</label>
+            <input
+              type="text"
+              id="usuario"
+              placeholder="Seu usuário"
+              autocomplete="username"
+              spellcheck="false"
+              autocapitalize="none"
+            >
+          </div>
+
+          <div class="campo">
+            <label for="senha">SENHA</label>
+            <input
+              type="password"
+              id="senha"
+              placeholder="Sua senha"
+              autocomplete="current-password"
+            >
+          </div>
+
+          <button class="botao-entrar" type="button">
+            <span class="seta" aria-hidden="true">▶</span>
+            <span>ENTRAR</span>
+          </button>
+        </form>
+
+        <nav class="links" aria-label="Opções da conta">
+          <a class="criar-conta" href="#">Criar Conta</a>
+          <a href="#">Recuperar Senha</a>
+        </nav>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
