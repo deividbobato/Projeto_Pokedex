@@ -1,7 +1,7 @@
 /* Fontes locais */
 @font-face {
   font-family: "Pixel";
-  src: url("imagens/pixel.ttf") format("truetype");
+  src: url("assets/fontes/pixel.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -9,15 +9,16 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("imagens/poppins.ttf") format("truetype");
+  src: url("assets/fontes/poppins.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 
+
 @font-face {
   font-family: "PixelTitulo";
-  src: url("imagens/pixelify.ttf") format("truetype");
+  src: url("assets/fontes/pixelify.ttf") format("truetype");
   font-style: normal;
   font-weight: 600;
   font-display: swap;
@@ -62,7 +63,7 @@ body::before {
       rgb(15 22 37 / 30%) 45%,
       rgb(9 15 26 / 73%) 100%
     ),
-    url("imagens/cenario.png") center / cover no-repeat;
+   url("assets/imagens/cenario.png") center / cover no-repeat;
   image-rendering: pixelated;
   filter: saturate(0.7);
 }
