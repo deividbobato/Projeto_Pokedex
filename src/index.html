@@ -1,32 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Define a cor principal da página em dispositivos compatíveis -->
+  <meta name="theme-color" content="#346a8b">
+
+  <!-- Descrição da página para mecanismos de busca -->
+  <meta name="description" content="Tela de entrada da Pokédex em pixel art.">
+
+  <title>Pokédex | Entrar</title>
+
+  <link rel="icon" href="imagens/pokedex.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <!--pagina de login centralizada-->
-    <div class="login-container">
-        <h2>Entrar<img src="imagens/pikachu-correndo35.gif" alt="#"></h2>
-        <form>
-            <div class="input-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="Digite seu e-maiil" required>
-            </div>
 
-            <div class="input-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" placeholder="Digite sya senha" required>
-            </div>
+  <main class="pagina">
 
-            <button type="submit" class="btn-login">Acessar</button>
+    <div class="login">
 
-            <a href="#" class="forgot-passaword">Esqueceu sua senha?</a>
-        
+      <img
+        class="logo-pokemon"
+        src="imagens/pokemon-logo.png"
+        alt="Pokémon"
+        width="520"
+        height="192"
+      >
+
+      <section class="cartao" aria-labelledby="titulo-login">
+
+        <h1 id="titulo-login">Entrar</h1>
+
+        <form class="formulario" aria-label="Entrar na Pokédex">
+
+          <div class="campo">
+            <label for="usuario">USUÁRIO</label>
+
+            <input
+              type="text"
+              id="usuario"
+              placeholder="Seu usuário"
+              autocomplete="username"
+              spellcheck="false"
+              autocapitalize="none">
+          </div>
+
+          <div class="campo">
+            <label for="senha">SENHA</label>
+
+            <input
+              type="password"
+              id="senha"
+              placeholder="Sua senha"
+              autocomplete="current-password">
+          </div>
+
+          <button class="botao-entrar" type="button">
+            <span class="seta" aria-hidden="true">▶</span>
+            <span>ENTRAR</span>
+          </button>
+
         </form>
+
+        <!-- Links relacionados ao acesso e recuperação da conta -->
+        <nav class="links" aria-label="Opções da conta">
+
+          <a class="criar-conta" href="#">Criar Conta</a>
+          <a href="#">Recuperar Senha</a>
+
+        </nav>
+
+      </section>
+
     </div>
+
+  </main>
+
 </body>
+
 </html>
