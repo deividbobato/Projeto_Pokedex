@@ -201,6 +201,22 @@ input:focus {
     background-color 100ms ease;
 }
 
+.mensagem {
+  min-height: 21px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.mensagem.erro {
+  color: #c0262d;
+}
+
+.mensagem.ok {
+  color: #2a7a3b;
+}
+
 .seta {
   font-family: Arial, sans-serif;
   font-size: 14px;
