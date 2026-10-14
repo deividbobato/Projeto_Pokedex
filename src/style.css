@@ -128,8 +128,6 @@ body {
   font-size: 12px;
   cursor: pointer;
   transition: background-color 0.2s;
-<<<<<<< HEAD
-=======
 }
 
 .mensagem {
@@ -146,7 +144,6 @@ body {
 
 .mensagem.ok {
   color: #2a7a3b;
->>>>>>> LocalStorage
 }
 
 .seta {
