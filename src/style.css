@@ -128,6 +128,25 @@ body {
   font-size: 12px;
   cursor: pointer;
   transition: background-color 0.2s;
+<<<<<<< HEAD
+=======
+}
+
+.mensagem {
+  min-height: 21px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.mensagem.erro {
+  color: #c0262d;
+}
+
+.mensagem.ok {
+  color: #2a7a3b;
+>>>>>>> LocalStorage
 }
 
 .seta {

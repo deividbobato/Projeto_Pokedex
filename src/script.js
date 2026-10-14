@@ -63,3 +63,44 @@ const listaPokemons = [
 ];
 
 console.log(listaPokemons);
+
+const campoUsuario = document.getElementById("usuario");
+const campoSenha = document.getElementById("senha");
+const botaoEntrar = document.getElementById("botao-entrar");
+const mensagem = document.getElementById("mensagem");
+
+const CHAVE_USUARIO = "pokedex:usuario";
+
+function mostrarMensagem(texto, tipo) {
+    mensagem.textContent = texto;
+    mensagem.className = "mensagem " + tipo;
+}
+
+try {
+    const salvo = JSON.parse(localStorage.getItem(CHAVE_USUARIO));
+    if (salvo) {
+        campoUsuario.value = salvo.nome;
+        mostrarMensagem("Bem-vindo de volta, " + salvo.nome + "!", "ok");
+    }
+    
+} catch (erro) {
+    console.error("Não foi possível ler o LocalStorage:", erro);
+}
+
+botaoEntrar.addEventListener("click", function () {
+    const nome = campoUsuario.value.trim();
+    const senha = campoSenha.value;
+
+    if (nome === "" || senha === "") {
+        mostrarMensagem("Preencha usuário e senha.", "erro");
+        return;
+    }
+
+    try {
+      localStorage.setItem(CHAVE_USUARIO, JSON.stringify({ nome : nome}));
+    } catch (erro) {
+        console.error("Não foi possível salvar:", erro);
+    } 
+
+    mostrarMensagem("Login feito! Bem-vindo, " + nome + "!", "ok");
+    }); 
