@@ -130,20 +130,37 @@ body {
   transition: background-color 0.2s;
 }
 
+/* Mensagens de login */
 .mensagem {
-  min-height: 21px;
-  margin: 0;
+  margin: 12px 0;
+  padding: 0;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: bold;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
-.mensagem.erro {
-  color: #c0262d;
-}
-
+/* Mensagem de sucesso */
 .mensagem.ok {
-  color: #2a7a3b;
+  color: #218838;
+  background-color: #e8f7ec;
+  border: 1px solid #a8ddb5;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* Mensagem de erro */
+.mensagem.erro {
+  color: #c62828;
+  background-color: #fdeaea;
+  border: 1px solid #f5b5b5;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+/* Evita espaço desnecessário quando não há mensagem */
+.mensagem:empty {
+  display: none;
 }
 
 .seta {
