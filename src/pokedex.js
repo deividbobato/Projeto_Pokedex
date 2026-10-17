@@ -1,0 +1,262 @@
+const listaPokemons = [
+    {
+        "id": 384,
+        "name": "rayquaza",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png",
+        "types": ["Dragon", "Flying"],
+        "height": 7.0,
+        "weight": 206.5,
+        "category": "Sky High",
+        "abilities": ["Air Lock"],
+        "weakness": ["Ice", "Rock", "Dragon", "Fairy"],
+        "resistances": ["Fire", "Water", "Grass", "Fighting", "Bug"],
+        "stats": {
+            "hp": 105,
+            "attack": 150,
+            "defense": 90,
+            "specialAttack": 150,
+            "specialDefense": 90,
+            "speed": 95,
+            "total": 680
+        }
+    }, //Mew
+    {
+        "id": 151,
+        "name": "mew",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
+        "types": ["Psychic"],
+        "height": 0.4,
+        "weight": 4.0,
+        "category": "New Species",
+        "abilities": ["Synchronize"],
+        "weakness": ["Bug", "Ghost", "Dark"],
+        "resistances": [],
+        "stats": {
+            "hp": 100,
+            "attack": 100,
+            "defense": 100,
+            "specialAttack": 100,
+            "specialDefense": 100,
+            "speed": 100,
+            "total": 600
+        }
+    }, // charmander
+    {
+        "id": 4,
+        "name": "charmander",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+        "types": ["Fire"],
+        "height": 0.6,
+        "weight": 8.5,
+        "category": "Lizard",
+        "abilities": ["Blaze"],
+        "weakness": ["Water", "Ground", "Rock"],
+        "resistances": ["Grass", "Bug", "Fairy"],
+        "stats": {
+            "hp": 39,
+            "attack": 52,
+            "defense": 43,
+            "specialAttack": 60,
+            "specialDefense": 50,
+            "speed": 65,
+            "total": 309
+        }
+    },
+    { // rattata
+        "id": 19,
+        "name": "rattata",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png",
+        "types": ["Normal"],
+        "height": 0.3,
+        "weight": 3.5,
+        "category": "Mouse",
+        "abilities": ["Run Away", "Guts", "One-Hit Wonder"],
+        "weakness": ["Fighting"],
+        "resistances": ["Poison", "Bug", "Fairy"],
+        "stats": {
+            "hp": 30,
+            "attack": 56,
+            "defense": 38,
+            "specialAttack": 35,
+            "specialDefense": 45,
+            "speed": 72,
+            "total": 276
+        }
+    },
+    {// pidgey
+        "id": 16,
+        "name": "pidgey",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png",
+        "types": ["Normal", "Flying"],
+        "height": 0.3,
+        "weight": 1.8, 
+        "category": "Tiny Bird",
+        "abilities": ["Keen Eye", "Tangled Feet", "Big Pecks"],
+        "weakness": ["Electric", "Ice", "Rock"],
+        "resistances": ["Grass", "Bug", "Fighting"],
+        "stats": {
+            "hp": 40,
+            "attack": 45,
+            "defense": 40,
+            "specialAttack": 35,
+            "specialDefense": 35,
+            "speed": 56,
+            "total": 251
+        } 
+    },
+    {// pikachu
+        "id": 25,
+        "name": "pikachu",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+        "types": ["Electric"],
+        "height": 0.4,
+        "weight": 6.0,
+        "category": "Mouse",
+        "abilities": ["Static", "Volt Absorb"],
+        "weakness": ["Ground"],
+        "resistances": ["Flying", "Steel"],
+        "stats": {
+            "hp": 35,
+            "attack": 55,
+            "defense": 40,
+            "specialAttack": 50,
+            "specialDefense": 50,
+            "speed": 90,
+            "total": 320
+        }
+    },
+    {// squirtle
+        "id": 7,
+        "name": "squirtle",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+        "types": ["Water"],
+        "height": 0.5,
+        "weight": 9.0,
+        "category": "Tiny Turtle",
+        "abilities": ["Torrent", "Rain Dish"],
+        "weakness": ["Electric", "Grass"],
+        "resistances": ["Fire", "Water", "Ice", "Steel"],
+        "stats": {
+            "hp": 44,
+            "attack": 48,
+            "defense": 65,
+            "specialAttack": 50,
+            "specialDefense": 64,
+            "speed": 43,
+            "total": 314
+        }
+    },
+    {// bulbasaur
+        "id": 1,
+        "name": "bulbasaur",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+        "types": ["Grass", "Poison"],
+        "height": 0.7,
+        "weight": 6.9,
+        "category": "Seed",
+        "abilities": ["Overgrow", "Chlorophyll"],
+        "weakness": ["Fire", "Ice", "Flying", "Psychic"],
+        "resistances": ["Water", "Electric", "Grass", "Fighting"],
+        "stats": {
+            "hp": 45,
+            "attack": 49,
+            "defense": 49,
+            "specialAttack": 65,
+            "specialDefense": 65,
+            "speed": 45,
+            "total": 318
+        }
+    },
+    {//snorlax
+        "id": 143,
+        "name": "snorlax",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
+        "types": ["Normal"],
+        "height": 1.2,
+        "weight": 46.0,
+        "category": "Sleeping",
+        "abilities": ["Immunity", "Thick Fat", "Gluttony"],
+        "weakness": ["Fighting"],
+        "resistances": ["Ghost"],
+        "stats": {
+            "hp": 160,
+            "attack": 110,
+            "defense": 65,
+            "specialAttack": 65,
+            "specialDefense": 65,
+            "speed": 30,
+            "total": 500
+        }
+
+    },
+    {//  blastoise
+        "id": 9,
+        "name": "blastoise",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
+        "types": ["Water"],
+        "height": 1.0,
+        "weight": 85.5,
+        "category": "Shellfish",
+        "abilities": ["Torrent", "Rain Dish"],
+        "weakness": ["Electric", "Grass"],
+        "resistances": ["Fire", "Water", "Ice", "Steel"],
+        "stats": {
+            "hp": 79,
+            "attack": 83,
+            "defense": 100,
+            "specialAttack": 85,
+            "specialDefense": 100,
+            "speed": 78,
+            "total": 535
+        }
+
+    }
+
+];
+
+console.log(listaPokemons);
+
+
+//logica pokedex
+let estadoPokemons = [];
+
+function inicializarEstado() {
+    const dadosSalvos = localStorage.getItem("pokedexData");
+    if (dadosSalvos) {
+        estadoPokemons = JSON.parse(dadosSalvos);
+    } else {
+        estadoPokemons = listaPokemons;
+        localStorage.setItem("pokedexData", JSON.stringify(estadoPokemons));
+    }
+}
+
+//manipulacao do dom
+
+function renderizarPokedex () {
+    const painelPokedex = document.getElementById("painel-pokedex");
+
+    painelPokedex.innerHTML = `
+        <h2>Pokedex</h2>
+        <p>Lista de Pokemons</p>
+        <div id="grid-cartoes" style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px;"></div>
+    `;
+
+
+    const containerCartoes = document.getElementById("grid-cartoes");
+
+    estadoPokemons.forEach(pokemon => {
+        const cartao = document.createElement("div");
+        cartao.className = "cartao-pokemon";
+    
+        cartao.innerHTML = `
+            <img src="${pokemon.imagem || pokemon.image}" alt="${pokemon.name}" style="width: 120px; height: 120px;">
+            <h3 style="margin: 10px 0 5px; font-family: 'PixelTitulo', monospace; font-size: 16px;">#${pokemon.id} - ${pokemon.name.toUpperCase()}</h3>
+            <p style="margin: 0; font-size: 14px;"><strong>Tipo:</strong> ${pokemon.types.join(", ")}</p>
+        `;
+
+        containerCartoes.appendChild(cartao);
+    });
+}
+
+inicializarEstado();
+renderizarPokedex();

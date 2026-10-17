@@ -1,68 +1,3 @@
-// array que recebe os JSON da API para os pokemons
-const listaPokemons = [
-    {
-        "id": 384,
-        "name": "rayquaza",
-        "types": ["Dragon", "Flying"],
-        "height": 7.0,
-        "weight": 206.5,
-        "category": "Sky High",
-        "abilities": ["Air Lock"],
-        "weakness": ["Ice", "Rock", "Dragon", "Fairy"],
-        "resistances": ["Fire", "Water", "Grass", "Fighting", "Bug"],
-        "stats": {
-            "hp": 105,
-            "attack": 150,
-            "defense": 90,
-            "specialAttack": 150,
-            "specialDefense": 90,
-            "speed": 95,
-            "total": 680
-        }
-    }, //  separando o Rayquaza do Mew
-    {
-        "id": 151,
-        "name": "mew",
-        "types": ["Psychic"],
-        "height": 0.4,
-        "weight": 4.0,
-        "category": "New Species",
-        "abilities": ["Synchronize"],
-        "weakness": ["Bug", "Ghost", "Dark"],
-        "resistances": [],
-        "stats": {
-            "hp": 100,
-            "attack": 100,
-            "defense": 100,
-            "specialAttack": 100,
-            "specialDefense": 100,
-            "speed": 100,
-            "total": 600
-        }
-    }, // separando o Mew do Charmander
-    {
-        "id": 4,
-        "name": "charmander",
-        "types": ["Fire"],
-        "height": 0.6,
-        "weight": 8.5,
-        "category": "Lizard",
-        "abilities": ["Blaze"],
-        "weakness": ["Water", "Ground", "Rock"],
-        "resistances": ["Grass", "Bug", "Fairy"],
-        "stats": {
-            "hp": 39,
-            "attack": 52,
-            "defense": 43,
-            "specialAttack": 60,
-            "specialDefense": 50,
-            "speed": 65,
-            "total": 309
-        }
-    }
-];
-
-console.log(listaPokemons);
 
 const campoUsuario = document.getElementById("usuario");
 const campoSenha = document.getElementById("senha");
@@ -104,3 +39,47 @@ botaoEntrar.addEventListener("click", function () {
 
     mostrarMensagem("Login feito! Bem-vindo, " + nome + "!", "ok");
     });
+
+//logica pokedex
+let estadoPokemons = [];
+
+function inicializarEstado() {
+    const dadosSalvos = localStorage.getItem("pokedexData");
+    if (dadosSalvos) {
+        estadoPokemons = JSON.parse(dadosSalvos);
+    } else {
+        estadoPokemons = listaPokemons;
+        localStorage.setItem("pokedexData", JSON.stringify(estadoPokemons));
+    }
+}
+
+//manipulacao do dom
+
+function renderizarPokedex () {
+    const painelPokedex = document.getElementById("painel-pokedex");
+
+    painelPokedex.innerHTML = `
+        <h2>Pokedex</h2>
+        <p>Lista de Pokemons</p>
+        <div id="grid-cartoes" style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px;"></div>
+    `;
+
+
+    const containerCartoes = document.getElementById("grid-cartoes");
+
+    estadoPokemons.forEach(pokemon => {
+        const cartao = document.createElement("div");
+        cartao.className = "cartao-pokemon";
+    
+        cartao.innerHTML = `
+            <img src="${pokemon.imagem || pokemon.image}" alt="${pokemon.name}" style="width: 120px; height: 120px;">
+            <h3 style="margin: 10px 0 5px; font-family: 'PixelTitulo', monospace; font-size: 16px;">#${pokemon.id} - ${pokemon.name.toUpperCase()}</h3>
+            <p style="margin: 0; font-size: 14px;"><strong>Tipo:</strong> ${pokemon.types.join(", ")}</p>
+        `;
+
+        containerCartoes.appendChild(cartao);
+    });
+}
+
+inicializarEstado();
+renderizarPokedex();
