@@ -1,4 +1,9 @@
 :root {
+    --borda: #202031;
+    --azul: #4145bf;
+    --amarelo: #ffe000;
+
+
     --azul-1: #2f3ea8;
     --azul-2: #222d88;
     --texto-aba: #b9c0ee;
@@ -19,9 +24,14 @@ body.pokedex {
 
 }
 
+body.pokedex::before {
+    display: none;
+}
+
+
 .cabecalho {
     background: linear-gradient(180deg, var(--azul-1), var(--azul-2));
-    border-buttom: 1px solid rgb(255 255 255 / 15%);
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
 
 }
 .topo {
