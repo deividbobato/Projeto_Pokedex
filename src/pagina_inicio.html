@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pokédex | Início</title>
+
+    <link rel="icon" href="imagens/pokedex.svg" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="pokedex_principal_tela.css" />
+  </head>
+
+  <body class="sem-fundo-pokedex">
+    <header class="cabecalho">
+      <div class="topo">
+        <a class="logo" href="pokedex.html" aria-label="Pokédex">
+          <img
+            class="logo-img"
+            src="imagens/pokedex.svg"
+            alt=""
+            width="34"
+            height="34"
+          />
+          <span class="logo-texto">POKÉDEX</span>
+        </a>
+
+        <div class="busca" role="search">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+
+          <input
+            id="campo-busca"
+            type="search"
+            placeholder="Buscar Pokémon por nome ou número"
+            aria-label="buscar Pokémon por nome ou numero"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+
+        <div class="acoes">
+          <button
+            class="btn-icone"
+            id="btn-aleatorio"
+            type="button"
+            title="Pokémon aleatório"
+            aria-label="Pokémon aleatório"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="12" cy="12" r="3" />
+              <path d="M3 12h6M15 12h6" />
+            </svg>
+          </button>
+          <button
+            class="btn-icone"
+            id="btn-tema"
+            type="button"
+            title="Alternar tema"
+            aria-label="Alternar tema"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="abas" role="tablist" arial-label="secoes">
+        <button
+          class="aba"
+          role="tab"
+          type="button"
+          id="aba-pokedex"
+          aria-controls="painel-pokedex"
+          aria-selected="true"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 11 12 3l9 8" />
+            <path d="M5 10v10h14V10" />
+          </svg>
+          Pokédex
+        </button>
+        <button
+          class="aba"
+          role="tab"
+          type="button"
+          id="aba-buscar"
+          arial-controls="painel-buscar"
+          aria-selected="false"
+          tabindex="-1"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            arial-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+          Buscar
+        </button>
+
+        <button
+          class="aba"
+          role="tab"
+          type="button"
+          id="aba-colecao"
+          arial-controls="painel-colecao"
+          aria-selected="false"
+          tabindex="-1"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            arial-hidden="true"
+          >
+            <path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z" />
+            <path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" />
+          </svg>
+          Coleção
+        </button>
+
+        <button
+          class="aba"
+          role="tab"
+          type="button"
+          id="aba-equipe"
+          aria-controls="painel-equipe"
+          aria-selected="false"
+          tabindex="-1"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="m4 4 16 16M20 4 4 20" />
+          </svg>
+          Equipe
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section
+        class="painel"
+        id="painel-pokedex"
+        role="tabpanel"
+        aria-labelledby="aba-pokedex"
+      >
+        <h2>Pokédex</h2>
+        <p>Lista de todos os pokémons</p>
+      </section>
+
+      <section
+        class="painel"
+        id="painel-buscar"
+        role="tabpanel"
+        aria-labelledby="aba-buscar"
+        hidden
+      >
+        <h2>Buscar</h2>
+        <p>Resultados da busca e para aaaparece aqui.</p>
+      </section>
+
+      <section
+        class="painel"
+        id="painel-colecao"
+        role="tabpanel"
+        aria-labelledby="aba-colecao"
+        hidden
+      >
+        <h2>Coleção</h2>
+        <p>lista de pokémons da coleção</p>
+      </section>
+
+      <section
+        class="painel"
+        id="painel-equipe"
+        role="tabpanel"
+        aria-labellebdy="aba-equipe"
+        hidden
+      >
+        <h2>Equipe</h2>
+        <p>Monte sua equipe de pokémons</p>
+      </section>
+    </main>
+  </body>
+</html>

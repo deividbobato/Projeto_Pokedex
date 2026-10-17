@@ -309,3 +309,7 @@ button:focus-visible {
     transition: none !important;
   }
 }
+
+body.sem-fundo-pokedex::before {
+  display: none !important;
+}
