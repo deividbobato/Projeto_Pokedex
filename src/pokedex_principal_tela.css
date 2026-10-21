@@ -317,3 +317,7 @@ body.pokedex::before {
         border-bottom: 4px solid var(--azul);
     }
 }
+
+[hidden] {
+    display: none !important;
+}

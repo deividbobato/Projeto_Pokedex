@@ -223,6 +223,9 @@ let estadoPokemons = [];
 let tipoAtivo = "Todos";
 let ordemAtiva = "numero";
 
+let colecao = [];
+const CHAVE_COLECAO = "pokedexColecao";
+
 const TIPOS = [
     "Todos", "Fire", "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon",
     "Dark", "Normal", "Fighting", "Poison", "Ground", "Flying", "Bug", "Rock",
@@ -251,6 +254,37 @@ function inicializarEstado() {
     }
 }
 
+function carregarColecao() {
+    try {
+        const salvo = JSON.parse(localStorage.getItem(CHAVE_COLECAO));
+        colecao = Array.isArray(salvo) ? salvo : [];
+    } catch (erro) {
+        colecao = [];
+    }
+}
+
+function salvarColecao() {
+    try {
+        localStorage.setItem(CHAVE_COLECAO, JSON.stringify(colecao));
+    } catch (erro) {
+        console.error("Não foi possível salvar a coleção:", erro);
+    }
+}
+
+function estaCapturado(id) {
+    return colecao.includes(id);
+}
+
+function capturar(id) {
+    if (estaCapturado(id)) return;
+    colecao.push(id);
+    salvarColecao();
+}
+
+function remover(id) {
+    colecao = colecao.filter(item => item !== id);
+    salvarColecao();
+}
 
 function obterListaFiltrada() {
     let lista = estadoPokemons.filter(p =>
@@ -324,6 +358,37 @@ document.getElementById("lista-ordem").addEventListener("click", e => {
     renderizarPokedex();
 });
 
+
+
+const abas = document.querySelectorAll (".aba");
+const paineis = document.querySelectorAll (".painel");
+
+
+function mostrarAba (idAba) {
+    const idPainel = idAba.replace("aba-", "painel-");
+
+    abas.forEach(aba => {
+        const ativa = aba.id === idAba;
+        aba.setAttribute("aria-selected", ativa);
+        aba.tabIndex = ativa ? 0 : -1;
+    });
+
+    paineis.forEach(painel => {
+        if (painel.id === idPainel) {
+            painel.hidden = false;
+            painel.style.display = "block";
+        } else {
+            painel.hidden = true;
+            painel.style.display = "none";
+        }
+    });
+}
+
+abas.forEach(aba => {
+    aba.addEventListener("click", () => mostrarAba(aba.id));
+});
+
 inicializarEstado();
+carregarColecao ();
 renderizarTipos();
 renderizarPokedex();
