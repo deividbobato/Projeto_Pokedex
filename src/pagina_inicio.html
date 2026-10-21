@@ -208,8 +208,52 @@
         role="tabpanel"
         aria-labelledby="aba-pokedex"
       >
-        <h2>Pokédex</h2>
-        <p>Lista de todos os pokémons</p>
+        <div class="layout-pokedex">
+          <aside class="filtros" aria-label="Filtros">
+            <div class="filtros-topo">
+              <h2 class="filtros-titulo">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 6h16M7 12h10M10 18h4" />
+                </svg>
+                FILTROS
+              </h2>
+              <p id="contador" class="contador"></p>
+            </div>
+
+            <div class="filtros-bloco">
+              <h3 class="filtros-rotulo">TIPO</h3>
+              <div class="tipos" id="lista-tipos"></div>
+            </div>
+
+            <div class="filtros-bloco">
+              <h3 class="filtros-rotulo">ORDENAR</h3>
+              <div class="ordem" id="lista-ordem">
+                <button type="button" class="opcao ativo" data-ordem="numero">
+                  ⇅ Nº Pokémon
+                </button>
+                <button type="button" class="opcao" data-ordem="nome">
+                  ⇅ Nome A→Z
+                </button>
+                <button type="button" class="opcao" data-ordem="hp">
+                  ⇅ HP (maior)
+                </button>
+              </div>
+            </div>
+          </aside>
+
+          <div class="conteudo-pokedex">
+            <div id="grid-cartoes"></div>
+          </div>
+        </div>
       </section>
 
       <section
@@ -244,9 +288,7 @@
         <h2>Equipe</h2>
         <p>Monte sua equipe de pokémons</p>
       </section>
+      <script src="pokedex.js"></script>
     </main>
-    <script src="pokedex.js"></script>
-  </body>
-</html>
   </body>
 </html>

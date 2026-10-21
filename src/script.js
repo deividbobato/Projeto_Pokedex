@@ -57,7 +57,7 @@ botaoEntrar.addEventListener("click", function () {
 
 // Redireciona para a página principal
 setTimeout(function () {
-    window.location.href = "index.html";
+    window.location.href = "pagina_inicio.html";
 }, 1000);
 });
 
