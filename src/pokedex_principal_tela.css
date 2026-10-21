@@ -65,6 +65,122 @@ body.pokedex::before {
     text-shadow: 2px 2px 0 var(--borda);
 }
 
+#painel-pokedex {
+    max-width: none;
+    padding: 0;
+}
+
+.layout-pokedex {
+    display: flex;
+    align-items: stretch;
+    min-height: calc(100vh - 100px);
+
+}
+
+.conteudo-pokedex {
+    flex: 1;
+    min-width: 0;
+    padding: 24px;
+}
+
+#grid-cartoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.filtros {
+    flex: 0 0 268px;
+    background: #1c1f4a;
+    border-right: 4px solid var(--azul);
+    color: #b9c0ee;
+}
+
+.filtros-topo   {
+    padding: 22px 14px 14px;
+}
+
+.painel .filtros-titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 6px;
+    font-family: "Pixel", monospace;
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.contador {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8a90c0;
+
+}
+
+.filtros-blocos {
+    padding: 16px 14px;
+    border-top: 1px solid rgb (255 255 255 / 8%);
+}
+
+.filtros-rotulo {
+    margin: 0 0 12px;
+    font-family: "Pixel", monospace;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #7f86b8;
+}
+
+.tipos  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.ordem {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.opcao {
+    height: 30px;
+    padding: 0 10px;
+    text-align: left;
+    background: #24285a;
+    border: 2 px solid #3a3f78;
+    border-radius: 0;
+    color: #8a90c0;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: backgroud-color 150ms ease,color 15ms ease;
+}
+
+.ordem .opcao {
+    height: 44px;
+    font-size: 13px;
+}
+
+.opcao:hover {
+    color: #fff;
+    background: #2d3270;
+}
+
+.opcao.ativo {
+    color: #fff;
+    background: #3f4fd1;
+    border-color: #3f4fd1;
+}
+
+.opcao:focus-visible {
+    outline: 2px solid var(--amarelo);
+    outline-offset: 2px;
+}
+
 .busca {
     display: flex;
     align-items: center;
@@ -190,13 +306,14 @@ body.pokedex::before {
     font-weight: 600;
 }
 
-@media (max-width: 600px) {
-    .topo {
-        gap: 10px;
-        padding: 12px;
+@media (max-width: 800px) {
+    .layout-pokedex {
+        flex-direction: column;
     }
 
-    .logo-texto {
-        display: none;
+    .filtros {
+        flex: none;
+        border-right: 0;
+        border-bottom: 4px solid var(--azul);
     }
 }
