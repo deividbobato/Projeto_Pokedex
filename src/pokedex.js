@@ -218,45 +218,112 @@ console.log(listaPokemons);
 
 
 //logica pokedex
+//logica pokedex
 let estadoPokemons = [];
+let tipoAtivo = "Todos";
+let ordemAtiva = "numero";
+
+const TIPOS = [
+    "Todos", "Fire", "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon",
+    "Dark", "Normal", "Fighting", "Poison", "Ground", "Flying", "Bug", "Rock",
+    "Ghost", "Steel", "Fairy"
+];
 
 function inicializarEstado() {
-    const dadosSalvos = localStorage.getItem("pokedexData");
-    if (dadosSalvos) {
-        estadoPokemons = JSON.parse(dadosSalvos);
+    if (typeof listaPokemons === "undefined") {
+        console.error("listaPokemons não foi encontrada.");
+        estadoPokemons = [];
+        return;
+    }
+
+    let dadosSalvos = null;
+    try {
+        dadosSalvos = JSON.parse(localStorage.getItem("pokedexData"));
+    } catch (erro) {
+        dadosSalvos = null;
+    }
+
+    if (Array.isArray(dadosSalvos) && dadosSalvos.length > 0) {
+        estadoPokemons = dadosSalvos;
     } else {
         estadoPokemons = listaPokemons;
         localStorage.setItem("pokedexData", JSON.stringify(estadoPokemons));
     }
 }
 
-//manipulacao do dom
 
-function renderizarPokedex () {
-    const painelPokedex = document.getElementById("painel-pokedex");
+function obterListaFiltrada() {
+    let lista = estadoPokemons.filter(p =>
+        tipoAtivo === "Todos" || p.types.includes(tipoAtivo)
+    );
 
-    painelPokedex.innerHTML = `
-        <h2>Pokedex</h2>
-        <p>Lista de Pokemons</p>
-        <div id="grid-cartoes" style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px;"></div>
-    `;
+    if (ordemAtiva === "numero") lista.sort((a, b) => a.id - b.id);
+    if (ordemAtiva === "nome")   lista.sort((a, b) => a.name.localeCompare(b.name));
+    if (ordemAtiva === "hp")     lista.sort((a, b) => b.stats.hp - a.stats.hp);
+
+    return lista;
+}
 
 
-    const containerCartoes = document.getElementById("grid-cartoes");
+function renderizarTipos() {
+    const container = document.getElementById("lista-tipos");
+    container.innerHTML = "";
 
-    estadoPokemons.forEach(pokemon => {
+    TIPOS.forEach(tipo => {
+        const botao = document.createElement("button");
+        botao.type = "button";
+        botao.className = "opcao" + (tipo === tipoAtivo ? " ativo" : "");
+        botao.dataset.tipo = tipo;
+        botao.textContent = (tipo === "Todos" ? "◈ " : "") + tipo;
+        container.appendChild(botao);
+    });
+}
+
+function renderizarPokedex() {
+    const container = document.getElementById("grid-cartoes");
+    const lista = obterListaFiltrada();
+
+    document.getElementById("contador").textContent =
+        `${lista.length} / ${estadoPokemons.length} Pokémons`;
+
+    container.innerHTML = "";
+
+    if (lista.length === 0) {
+        container.innerHTML = "<p>Nenhum Pokémon encontrado.</p>";
+        return;
+    }
+
+    lista.forEach(pokemon => {
         const cartao = document.createElement("div");
         cartao.className = "cartao-pokemon";
-    
         cartao.innerHTML = `
             <img src="${pokemon.imagem || pokemon.image}" alt="${pokemon.name}" style="width: 120px; height: 120px;">
             <h3 style="margin: 10px 0 5px; font-family: 'PixelTitulo', monospace; font-size: 16px;">#${pokemon.id} - ${pokemon.name.toUpperCase()}</h3>
             <p style="margin: 0; font-size: 14px;"><strong>Tipo:</strong> ${pokemon.types.join(", ")}</p>
         `;
-
-        containerCartoes.appendChild(cartao);
+        container.appendChild(cartao);
     });
 }
 
+
+document.getElementById("lista-tipos").addEventListener("click", e => {
+    const botao = e.target.closest("[data-tipo]");
+    if (!botao) return;
+    tipoAtivo = botao.dataset.tipo;
+    renderizarTipos();
+    renderizarPokedex();
+});
+
+document.getElementById("lista-ordem").addEventListener("click", e => {
+    const botao = e.target.closest("[data-ordem]");
+    if (!botao) return;
+    ordemAtiva = botao.dataset.ordem;
+    document.querySelectorAll("#lista-ordem .opcao").forEach(b =>
+        b.classList.toggle("ativo", b === botao)
+    );
+    renderizarPokedex();
+});
+
 inicializarEstado();
+renderizarTipos();
 renderizarPokedex();
