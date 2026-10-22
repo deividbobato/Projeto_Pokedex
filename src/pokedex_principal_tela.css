@@ -321,3 +321,33 @@ body.pokedex::before {
 [hidden] {
     display: none !important;
 }
+
+/* Botão de capturar Pokémon */
+.cartao-pokemon {
+    position: relative;
+}
+
+.btn-captura {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: white;
+    color: #666;
+    border: 2px solid #202031;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.btn-captura:hover {
+    transform: scale(1.1);
+}
+
+.btn-captura.capturado {
+    background: #b9f5c8;
+    color: #218838;
+}

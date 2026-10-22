@@ -253,7 +253,7 @@ function inicializarEstado() {
         localStorage.setItem("pokedexData", JSON.stringify(estadoPokemons));
     }
 }
-
+salvarColecao
 function carregarColecao() {
     try {
         const salvo = JSON.parse(localStorage.getItem(CHAVE_COLECAO));
@@ -334,11 +334,43 @@ function renderizarPokedex() {
             <img src="${pokemon.imagem || pokemon.image}" alt="${pokemon.name}" style="width: 120px; height: 120px;">
             <h3 style="margin: 10px 0 5px; font-family: 'PixelTitulo', monospace; font-size: 16px;">#${pokemon.id} - ${pokemon.name.toUpperCase()}</h3>
             <p style="margin: 0; font-size: 14px;"><strong>Tipo:</strong> ${pokemon.types.join(", ")}</p>
+
+            <button
+    type="button"
+    class="btn-captura ${estaCapturado(pokemon.id) ? 'capturado' : ''}"
+    data-captura-id="${pokemon.id}"
+    aria-label="Capturar Pokémon"
+>
+    <svg viewBox="0 0 24 24" width="24" height="24">
+        <circle cx="12" cy="12" r="9"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M3 12h18"
+            stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="12" r="3"
+            fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+</button>
+
         `;
         container.appendChild(cartao);
     });
 }
 
+document.getElementById("grid-cartoes").addEventListener("click", function(evento) {
+    const botao = evento.target.closest("[data-captura-id]");
+
+    if (!botao) return;
+
+    const id = Number(botao.dataset.capturaId);
+
+    if (estaCapturado(id)) {
+        remover(id);
+    } else {
+        capturar(id);
+    }
+
+    renderizarPokedex();
+});
 
 document.getElementById("lista-tipos").addEventListener("click", e => {
     const botao = e.target.closest("[data-tipo]");
