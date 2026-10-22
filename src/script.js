@@ -35,11 +35,11 @@ botaoEntrar.addEventListener("click", function () {
         return;
     }
 
-    // Verifica se o login e a senha estão corretos
-   //if (nome !== USUARIO_CORRETO || senha !== SENHA_CORRETA) {
-    //    mostrarMensagem("Usuário ou senha incorretos.", "erro");
-     //   return;
- //   }
+     //Verifica se o login e a senha estão corretos
+   if (nome !== USUARIO_CORRETO || senha !== SENHA_CORRETA) {
+        mostrarMensagem("Usuário ou senha incorretos.", "erro");
+        return;
+    }
 
     // Salva o usuário no LocalStorage
     try {
