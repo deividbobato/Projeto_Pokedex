@@ -232,6 +232,56 @@ const TIPOS = [
     "Ghost", "Steel", "Fairy"
 ];
 
+const COR_TIPO = {
+    Grass: "#3a9a4f",    Poison: "#a050c8",  Fire: "#f05a28",
+    Water: "#3a86e0",    Electric: "#e8b800", Psychic: "#ea5a9a",
+    Ice: "#5bc8d8",      Dragon: "#6a4cd8",  Dark: "#4a4458",
+    Normal: "#8a8a7a",   Fighting: "#c03028", Ground: "#c8a040",
+    Flying: "#7a90e0",   Bug: "#8ab020",     Rock: "#a8903a",
+    Ghost: "#6a50a0",    Steel: "#8a9aaa",   Fairy: "#e888b8"
+
+};
+
+function corDoTipo(pokemon) {
+    return COR_TIPO[pokemon.types[0]] || "#888";
+}
+
+function nomeBonito(nome) {
+    return nome.charAt(0).toUpperCase() + nome.slice(1);
+}
+
+function formatarNumero(id) {
+    return "#" + String(id).padStart(3, "0");
+}
+
+function corHp(hp) {
+    if (hp < 50) return "#c00000";
+    if (hp < 80) return "#d4a017";
+    return "#2e9e4f";
+}
+
+function htmlTipos(pokemon) {
+    return pokemon.types
+        .map(t => `<span class="badge-tipo" style="--cor:${COR_TIPO[t] || "#888"}">${t}</span>`)
+        .join("");
+
+}
+
+const ICONE_LIXEIRA = `
+    <svg 
+        viewBox="0 0 24 24" 
+        width="18"
+        height="18" 
+        fill="none" 
+        stroke="currentColor"
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        aria-hidden="true"
+    >
+        <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 10v6M14 10v6"/>
+    </svg>`;
+
 function inicializarEstado() {
     if (typeof listaPokemons === "undefined") {
         console.error("listaPokemons não foi encontrada.");
@@ -328,29 +378,44 @@ function renderizarPokedex() {
     }
 
     lista.forEach(pokemon => {
+        const hp = pokemon.stats.hp;
         const cartao = document.createElement("div");
         cartao.className = "cartao-pokemon";
+        cartao.style.setProperty("--cor", corDoTipo(pokemon));
+
         cartao.innerHTML = `
-            <img src="${pokemon.imagem || pokemon.image}" alt="${pokemon.name}" style="width: 120px; height: 120px;">
-            <h3 style="margin: 10px 0 5px; font-family: 'PixelTitulo', monospace; font-size: 16px;">#${pokemon.id} - ${pokemon.name.toUpperCase()}</h3>
-            <p style="margin: 0; font-size: 14px;"><strong>Tipo:</strong> ${pokemon.types.join(", ")}</p>
+            <span class="cartao-numero">${formatarNumero(pokemon.id)}</span>
 
             <button
-    type="button"
-    class="btn-captura ${estaCapturado(pokemon.id) ? 'capturado' : ''}"
-    data-captura-id="${pokemon.id}"
-    aria-label="Capturar Pokémon"
->
-    <svg viewBox="0 0 24 24" width="24" height="24">
-        <circle cx="12" cy="12" r="9"
-            fill="none" stroke="currentColor" stroke-width="2"/>
-        <path d="M3 12h18"
-            stroke="currentColor" stroke-width="2"/>
-        <circle cx="12" cy="12" r="3"
-            fill="none" stroke="currentColor" stroke-width="2"/>
-    </svg>
-</button>
+                type="button"
+                class="btn-captura ${estaCapturado(pokemon.id) ? 'capturado' : ''}"
+                data-captura-id="${pokemon.id}"
+                aria-label="capturar Pokémon"
+            >
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <circle cx="12" cy="12" r="9"
+                        fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M3 12h18"
+                        stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="12" r="3"
+                        fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
 
+            <img class="cartao-img" src="${pokemon.imagem || pokemon.image}" alt="${pokemon.name}">
+            <h3 class="cartao-nome"> ${nomeBonito(pokemon.name)}</h3>
+            <div class="cartao-tipos">${htmlTipos(pokemon)}</div>
+
+            <div class="cartao-hp"><span>HP</span><span>${hp}</span></div>
+            <div class="barra">
+                <div class="barra-preenchida"
+                style="width:${Math.min(hp / 255 * 100, 100)}%; background:${corHp(hp)}"></div>
+            </div>
+
+            <div class="cartao-medidas">
+                <span>${pokemon.height.toFixed(1)}m</span>
+                <span>${pokemon.weight.toFixed(1)}kg</span>
+           </div>
         `;
         container.appendChild(cartao);
     });

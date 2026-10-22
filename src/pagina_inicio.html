@@ -274,8 +274,8 @@
         aria-labelledby="aba-colecao"
         hidden
       >
-        <h2>Coleção</h2>
-        <p>lista de pokémons da coleção</p>
+        <h2 class="titulo-secao" id="contador-colecao">0 CAPTURADOS</h2>
+        <div id="lista-colecao"></div>
       </section>
 
       <section
@@ -288,6 +288,25 @@
         <h2>Equipe</h2>
         <p>Monte sua equipe de pokémons</p>
       </section>
+
+      <div class="modal" id="modal-remover" hidden>
+        <div
+          class="modal-caixa"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-titulo"
+        >
+          <h3 id="modal-titulo" class="modal-img">REMOVER DA COLEÇÃO?</h3>
+          <p id="modal-texto" class="modal-texto"></p>
+          <div class="modal-botoes">
+            <button type="button" id="modal-nao" class="btn-nao">NÃO</button>
+            <button type="button" id="modal-sim" class="btn-sim">
+              SIM, REMOVER
+            </button>
+          </div>
+          <img id="modal-img" class="model-img" src="" alt="" />
+        </div>
+      </div>
       <script src="pokedex.js"></script>
     </main>
   </body>
