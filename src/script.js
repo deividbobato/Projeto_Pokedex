@@ -4,6 +4,14 @@ const campoSenha = document.getElementById("senha");
 const botaoEntrar = document.getElementById("botao-entrar");
 const mensagem = document.getElementById("mensagem");
 
+[campoUsuario, campoSenha].forEach((campo) => {
+    campo.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            botaoEntrar.click();
+        }
+    });
+});
+
 const CHAVE_USUARIO = "pokedex:usuario";
 const USUARIO_CORRETO = "user";
 const SENHA_CORRETA = "12345";
