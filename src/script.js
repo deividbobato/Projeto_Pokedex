@@ -4,6 +4,14 @@ const campoSenha = document.getElementById("senha");
 const botaoEntrar = document.getElementById("botao-entrar");
 const mensagem = document.getElementById("mensagem");
 
+[campoUsuario, campoSenha].forEach((campo) => {
+    campo.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            botaoEntrar.click();
+        }
+    });
+});
+
 const CHAVE_USUARIO = "pokedex:usuario";
 const USUARIO_CORRETO = "user";
 const SENHA_CORRETA = "12345";
@@ -35,10 +43,10 @@ botaoEntrar.addEventListener("click", function () {
         return;
     }
 
-    
+     //Verifica se o login e a senha estão corretos
    if (nome !== USUARIO_CORRETO || senha !== SENHA_CORRETA) {
-       mostrarMensagem("Usuário ou senha incorretos.", "erro");
-      return;
+        mostrarMensagem("Usuário ou senha incorretos.", "erro");
+        return;
     }
 
     // Salva o usuário no LocalStorage
