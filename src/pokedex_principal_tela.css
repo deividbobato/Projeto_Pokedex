@@ -84,8 +84,8 @@ body.pokedex::before {
 }
 
 #grid-cartoes {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 16px;
 }
 
@@ -291,6 +291,17 @@ body.pokedex::before {
     border-bottom-color: var(--amarelo);
 }
 
+.badge-aba {
+    min-width: 18px;
+    padding: 1px 5px;
+    background: var(--amarelo);
+    color: var(--borda);
+    border-radius: 9px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+}
+
 .painel {
     max-width: 900px;
     padding: 28px 24px;
@@ -350,4 +361,184 @@ body.pokedex::before {
 .btn-captura.capturado {
     background: #b9f5c8;
     color: #218838;
+}
+
+.cartao-pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 16px 12px;
+    background: color-mix(in srgb, var(--cor) 12%, #fff);
+    border: 3px solid var (--borda);
+    border-top: 6px solid var(__cor);
+    box-shadow: 4px 4px 0 var(--borda);
+    color: var(--borda);
+}
+
+.cartao-numero {
+    align-self: flex-start;
+    font-family: "Pixel", monospace;
+    font-size: 11px;
+    color: var(--cor);
+}
+
+.cartao-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.cartao-nome {
+    margin: 8px 0 6px;
+    font-family: "PixelTitulo", monospace;
+    font-size: 16px;
+}
+
+.cartao-tipos {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.badge-tipo {
+    padding: 2px 8px;
+    background: var(--cor);
+    color: #fff;
+    border: 2px solid var(--borda);
+    font-family: "Pixel", monospace;
+    font-size: 8px;
+}
+
+.carao-hp {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 700;
+
+}
+
+.barra {
+    width: 100%;
+    height: 6px;
+    margin-top: 4px;
+    background: #fff;
+    border: 1px solid var(--borda);
+}
+
+.barra-preenchida {height: 100%; }
+
+.cartao-medidas {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #5a5f85;
+}
+
+.titulo-secao {
+    font-family: "Pixel", monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#painel-colecao {max-width: none;}
+
+.titulo-colecao {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap : 12px;
+    margin: top 16px;
+
+}
+
+.item-colecao {
+    display: flex;
+    align-items: center;
+    gap: 12px ;
+    padding: 12px;
+    background: #fff;
+    color: var(--borda);
+    border: 3px solid var(--borda);
+    box-shadow: 4px 4px 0 var(--borda);
+}
+
+.item-img {
+    width: 64px;
+    height: 64px;
+    padding: 4px;
+    background: color-mix(in srgb, var(--cor) 15%, #fff);
+    border:2px solid var(--borda);
+    object-fit: contain;
+}
+
+.btn-remover {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    background:#fff;
+    color: #c00000;
+    border: 2px solid var(--borda);
+    box-shadow: 2px 2px 0 var(--borda);
+    cursor: pointer;
+}
+
+.btn-remover:hover {background: #fdeaea;}
+
+.vazio  {grid-column : 1 / -1; text-align: center;}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items:  center;
+    background: rgb(0 0 0 / 55%);
+    backdrop-filter: blur(4px);
+    
+}
+
+.modal-caixa {
+    width: min(380px, 90vw);
+    padding: 24px;
+    text-align: center;
+    background: #fff;
+    color: var(--borda);
+    border: 4px solid var(--borda);
+    box-shadow: 8px 8px 0 #151523;
+}
+
+.moda-titulo {
+    margin: 12px 0 8px;
+    font-family: "Pixel", monospace;
+    font-size: 12px;
+}
+
+.modal-texto { margin: 0 0 20px; font-size: 14px; color: #494754; }
+
+.modal-botoes { display: flex; gap: 12px; }
+
+.modal-botoes button {
+    flex: 1;
+    height: 44px;
+    border: 2px solid var(--borda);
+    box-shadow: 3px 3px 0 var(--borda);
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-nao { background: #fff; color: var(--borda); }
+.btn-sim { background: #c00000; color: #fff; }
+
+.modal-botoes button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--borda);
 }
