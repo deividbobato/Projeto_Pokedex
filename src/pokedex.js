@@ -620,3 +620,33 @@ carregarColecao();
 renderizarTipos();
 renderizarPokedex();
 renderizarColecao();
+
+
+const layoutPokedex = document.querySelector(".layout-pokedex");
+const btnFiltros = document.getElementById("btn-filtros");
+const CHAVE_FILTROS = "pokedexFiltrosFechados";
+
+function aplicarEstadoFiltros(fechado) {
+  layoutPokedex.classList.toggle("filtros-fechados", fechado);
+  btnFiltros.setAttribute("aria-expanded", String(!fechado));
+  btnFiltros.setAttribute(
+    "aria-label",
+    fechado ? "Abrir filtros" : "Fechar filtros",
+  );
+}
+
+btnFiltros.addEventListener("click", () => {
+  const fechado = !layoutPokedex.classList.contains("filtros-fechados");
+  aplicarEstadoFiltros(fechado);
+  try {
+    localStorage.setItem(CHAVE_FILTROS, fechado);
+  } catch (erro) {
+    console.error("Não foi possível salvar o estado dos filtros:", erro);
+  }
+});
+
+try {
+  aplicarEstadoFiltros(localStorage.getItem(CHAVE_FILTROS) === "true");
+} catch (erro) {
+  aplicarEstadoFiltros(false);
+}
