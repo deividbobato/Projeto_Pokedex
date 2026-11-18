@@ -650,3 +650,237 @@ try {
 } catch (erro) {
   aplicarEstadoFiltros(false);
 }
+
+// ============================================================
+// ABA EQUIPE
+// ============================================================
+
+const CHAVE_EQUIPE = "pokedexEquipe";
+const LIMITE_EQUIPE = 6;
+
+// ids dos Pokemon que formam a equipe (independente da colecao)
+let equipe = [];
+
+// ---------- Dados e persistencia ----------
+
+function carregarEquipe() {
+  try {
+    const salvo = JSON.parse(localStorage.getItem(CHAVE_EQUIPE));
+
+    if (!Array.isArray(salvo)) {
+      equipe = [];
+      return;
+    }
+
+    // Mantem so ids que existem na Pokedex, sem repetidos e ate o limite.
+    // Isso protege a equipe caso o dado salvo esteja alterado ou corrompido.
+    equipe = salvo
+      .filter(
+        (id, posicao) =>
+          salvo.indexOf(id) === posicao &&
+          estadoPokemons.some((p) => p.id === id),
+      )
+      .slice(0, LIMITE_EQUIPE);
+  } catch (erro) {
+    equipe = [];
+  }
+}
+
+function salvarEquipe() {
+  try {
+    localStorage.setItem(CHAVE_EQUIPE, JSON.stringify(equipe));
+  } catch (erro) {
+    console.error("Não foi possível salvar a equipe:", erro);
+  }
+}
+
+function estaNaEquipe(id) {
+  return equipe.includes(id);
+}
+
+function equipeCheia() {
+  return equipe.length >= LIMITE_EQUIPE;
+}
+
+// Retorna true se o Pokemon foi adicionado e false se a regra impediu.
+// Aqui ficam as regras: limite de 6, sem repetir e so Pokemon cadastrado.
+function adicionarNaEquipe(id) {
+  if (equipeCheia() || estaNaEquipe(id)) return false;
+  if (!estadoPokemons.some((p) => p.id === id)) return false;
+
+  equipe.push(id);
+  salvarEquipe();
+  return true;
+}
+
+function removerDaEquipe(id) {
+  equipe = equipe.filter((item) => item !== id);
+  salvarEquipe();
+}
+
+function textoLimiteEquipe() {
+  return `Limite de ${LIMITE_EQUIPE} Pokémon atingido. Remova um Pokémon para adicionar outro.`;
+}
+
+// ---------- Aba Equipe: cabecalho e cards ----------
+
+function renderizarEquipe() {
+  const lista = document.getElementById("lista-equipe");
+  const aviso = document.getElementById("aviso-equipe");
+  const botaoAdicionar = document.getElementById("btn-equipe-adicionar");
+
+  const membros = equipe
+    .map((id) => estadoPokemons.find((p) => p.id === id))
+    .filter(Boolean);
+
+  document.getElementById("contador-equipe").textContent =
+    `${membros.length}/${LIMITE_EQUIPE} POKÉMON`;
+
+  // Com a equipe cheia, o botao fica bloqueado e o aviso aparece
+  botaoAdicionar.disabled = equipeCheia();
+  aviso.hidden = !equipeCheia();
+  aviso.textContent = textoLimiteEquipe();
+
+  lista.innerHTML = "";
+
+  if (membros.length === 0) {
+    lista.innerHTML = `
+      <div class="vazio equipe-vazio">
+        <p class="equipe-vazio-titulo">SUA EQUIPE ESTÁ VAZIA</p>
+        <p>Clique em "Adicionar Pokémon" para escolher até ${LIMITE_EQUIPE} Pokémon.</p>
+      </div>`;
+    return;
+  }
+
+  // Usa as mesmas classes do cartao da aba Pokedex
+  membros.forEach((p) => {
+    const cartao = document.createElement("div");
+    cartao.className = "cartao-pokemon cartao-equipe";
+    cartao.style.setProperty("--cor", corDoTipo(p));
+
+    cartao.innerHTML = `
+      <span class="cartao-numero">${formatarNumero(p.id)}</span>
+
+      <button type="button" class="btn-remover"
+              data-equipe-remover-id="${p.id}"
+              aria-label="Remover ${nomeBonito(p.name)} da equipe">
+        ${ICONE_LIXEIRA}
+      </button>
+
+      <img class="cartao-img" src="${p.image}" alt="${p.name}">
+      <h3 class="cartao-nome">${nomeBonito(p.name)}</h3>
+      <div class="cartao-tipos">${htmlTipos(p)}</div>
+    `;
+    lista.appendChild(cartao);
+  });
+}
+
+document.getElementById("lista-equipe").addEventListener("click", (e) => {
+  const botao = e.target.closest("[data-equipe-remover-id]");
+  if (!botao) return;
+
+  removerDaEquipe(Number(botao.dataset.equipeRemoverId));
+  renderizarEquipe();
+  // Se o seletor estiver aberto, ele tambem precisa refletir a remocao
+  renderizarSeletorEquipe();
+});
+
+// ---------- Seletor de Pokemon (painel para adicionar) ----------
+
+const modalEquipe = document.getElementById("modal-equipe");
+const campoBuscaEquipe = document.getElementById("seletor-busca");
+
+function renderizarSeletorEquipe() {
+  const lista = document.getElementById("seletor-lista");
+  const aviso = document.getElementById("seletor-aviso");
+  const termo = campoBuscaEquipe.value.trim().toLowerCase();
+
+  aviso.hidden = !equipeCheia();
+  aviso.textContent = textoLimiteEquipe();
+
+  // Pesquisa por nome ou por numero, como o campo de busca do cabecalho
+  const encontrados = estadoPokemons
+    .filter(
+      (p) =>
+        p.name.toLowerCase().includes(termo) ||
+        formatarNumero(p.id).includes(termo) ||
+        String(p.id) === termo,
+    )
+    .sort((a, b) => a.id - b.id);
+
+  lista.innerHTML = "";
+
+  if (encontrados.length === 0) {
+    lista.innerHTML = '<p class="vazio">Nenhum Pokémon encontrado.</p>';
+    return;
+  }
+
+  // Usa as mesmas classes do item da aba Colecao
+  encontrados.forEach((p) => {
+    const naEquipe = estaNaEquipe(p.id);
+    const item = document.createElement("div");
+    item.className = "item-colecao";
+    item.style.setProperty("--cor", corDoTipo(p));
+
+    item.innerHTML = `
+      <img class="item-img" src="${p.image}" alt="${p.name}">
+      <div class="item-info">
+        <span class="item-numero">${formatarNumero(p.id)}</span>
+        <h3 class="item-nome">${nomeBonito(p.name)}</h3>
+        <div class="cartao-tipos">${htmlTipos(p)}</div>
+      </div>
+      <button type="button" class="btn-seletor-adicionar"
+              data-equipe-adicionar-id="${p.id}"
+              ${naEquipe || equipeCheia() ? "disabled" : ""}>
+        ${naEquipe ? "NA EQUIPE" : "ADICIONAR"}
+      </button>
+    `;
+    lista.appendChild(item);
+  });
+}
+
+function abrirSeletorEquipe() {
+  if (equipeCheia()) return;
+  campoBuscaEquipe.value = "";
+  renderizarSeletorEquipe();
+  modalEquipe.hidden = false;
+  campoBuscaEquipe.focus();
+}
+
+function fecharSeletorEquipe() {
+  modalEquipe.hidden = true;
+  // Devolve o foco ao botao que abriu o seletor
+  document.getElementById("btn-equipe-adicionar").focus();
+}
+
+document
+  .getElementById("btn-equipe-adicionar")
+  .addEventListener("click", abrirSeletorEquipe);
+
+document
+  .getElementById("seletor-fechar")
+  .addEventListener("click", fecharSeletorEquipe);
+
+// Clicar no fundo escuro (fora da caixa) tambem fecha o seletor
+modalEquipe.addEventListener("click", (e) => {
+  if (e.target === modalEquipe) fecharSeletorEquipe();
+});
+
+
+campoBuscaEquipe.addEventListener("input", renderizarSeletorEquipe);
+
+document.getElementById("seletor-lista").addEventListener("click", (e) => {
+  const botao = e.target.closest("[data-equipe-adicionar-id]");
+  if (!botao) return;
+
+  if (adicionarNaEquipe(Number(botao.dataset.equipeAdicionarId))) {
+    renderizarEquipe();
+    // Atualiza os botoes (NA EQUIPE) e o aviso de limite no seletor
+    renderizarSeletorEquipe();
+  }
+});
+
+// ---------- Inicializacao da equipe ----------
+// estadoPokemons ja foi carregado por inicializarEstado() mais acima
+carregarEquipe();
+renderizarEquipe();
