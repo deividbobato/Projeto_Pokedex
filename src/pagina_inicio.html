@@ -1,335 +1,916 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+:root {
+  --borda: #202031;
+  --azul: #4145bf;
+  --amarelo: #ffe000;
 
-    <title>Pokédex | Início</title>
+  --azul-1: #2f3ea8;
+  --azul-2: #222d88;
+  --texto-aba: #b9c0ee;
+  --fundo-pagina: #eef0fb;
+  --texto-pagina: #1c2253;
+}
 
-    <link rel="icon" href="imagens/pokedex.svg" type="image/svg+xml" />
+:root[data-tema='escuro'] {
+  --azul-1: #1a1f4d;
+  --azul-2: #11153a;
+  --fundo-pagina: #0c0f2b;
+  --texto-pagina: #e6e9ff;
+}
 
-    <link rel="stylesheet" href="style.css" />
+body.pokedex {
+  background: var(--fundo-pagina);
+  color: var(--texto-pagina);
+}
 
-    <link rel="stylesheet" href="pokedex_principal_tela.css" />
-  </head>
+body.pokedex::before {
+  display: none;
+}
 
-  <body class="sem-fundo pokedex">
-    <header class="cabecalho">
-      <div class="topo">
-        <a class="logo" href="pokedex.html" aria-label="Pokédex">
-          <img
-            class="logo-img"
-            src="imagens/pokedex.svg"
-            alt=""
-            width="34"
-            height="34"
-          />
-          <span class="logo-texto">POKÉDEX</span>
-        </a>
+.cabecalho {
+  background: linear-gradient(180deg, var(--azul-1), var(--azul-2));
+  border-bottom: 1px solid rgb(255 255 255 / 15%);
+}
 
-        <div class="busca" role="search">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px 18px 12px;
+}
 
-          <input
-            id="campo-busca"
-            type="search"
-            placeholder="Buscar Pokémon por nome ou número"
-            aria-label="buscar Pokémon por nome ou numero"
-            autocomplete="off"
-            spellcheck="false"
-          />
-        </div>
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  color: #fff;
+  text-decoration: none;
+}
 
-        <div class="acoes">
-          <button
-            class="btn-icone"
-            id="btn-aleatorio"
-            type="button"
-            title="Pokémon aleatório"
-            aria-label="Pokémon aleatório"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="12" r="9" />
-              <circle cx="12" cy="12" r="3" />
-              <path d="M3 12h6M15 12h6" />
-            </svg>
-          </button>
-          <button
-            class="btn-icone"
-            id="btn-tema"
-            type="button"
-            title="Alternar tema"
-            aria-label="Alternar tema"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-            </svg>
-          </button>
-        </div>
-      </div>
+.logo-img {
+  width: 34px;
+  height: 34px;
+  image-rendering: pixelated;
+}
 
-      <nav class="abas" role="tablist" arial-label="secoes">
-        <button
-          class="aba"
-          role="tab"
-          type="button"
-          id="aba-pokedex"
-          aria-controls="painel-pokedex"
-          aria-selected="true"
-        >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M3 11 12 3l9 8" />
-            <path d="M5 10v10h14V10" />
-          </svg>
-          Pokédex
-        </button>
-        <button
-          class="aba"
-          role="tab"
-          type="button"
-          id="aba-buscar"
-          arial-controls="painel-buscar"
-          aria-selected="false"
-          tabindex="-1"
-        >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            arial-hidden="true"
-          >
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-3.5-3.5" />
-          </svg>
-          Buscar
-        </button>
+.logo-texto {
+  font-family: 'Pixel', monospace;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 0 var(--borda);
+}
 
-        <button
-          class="aba"
-          role="tab"
-          type="button"
-          id="aba-colecao"
-          arial-controls="painel-colecao"
-          aria-selected="false"
-          tabindex="-1"
-        >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            arial-hidden="true"
-          >
-            <path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z" />
-            <path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" />
-          </svg>
-          Coleção
-          <span id="badge-colecao" class="badge-aba" hidden>0</span>
-        </button>
+#painel-pokedex {
+  max-width: none;
+  padding: 0;
+}
 
-        <button
-          class="aba"
-          role="tab"
-          type="button"
-          id="aba-equipe"
-          aria-controls="painel-equipe"
-          aria-selected="false"
-          tabindex="-1"
-        >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            aria-hidden="true"
-          >
-            <path d="m4 4 16 16M20 4 4 20" />
-          </svg>
-          Equipe
-        </button>
-      </nav>
-    </header>
+.layout-pokedex {
+  display: flex;
+  align-items: stretch;
+  min-height: calc(100vh - 100px);
+  position: relative;
+}
 
-    <main>
-      <section
-        class="painel"
-        id="painel-pokedex"
-        role="tabpanel"
-        aria-labelledby="aba-pokedex"
-      >
-        <div class="layout-pokedex">
-          <button
-            type="button"
-            class="btn-filtros"
-            id="btn-filtros"
-            aria-expanded="true"
-            aria-controls="filtros"
-            aria-label="Fechar filtros"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              aria-hidden="true"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-          <aside class="filtros" id="filtros" aria-label="Filtros">
-            <div class="filtros-topo">
-              <h2 class="filtros-titulo">
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  aria-hidden="true"
-                >
-                  <path d="M4 6h16M7 12h10M10 18h4" />
-                </svg>
-                FILTROS
-              </h2>
-              <p id="contador" class="contador"></p>
-            </div>
+.btn-filtros {
+  position: absolute;
+  top: 19px;
+  left: 220px;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: #fff;
+  color: var(--borda);
+  border: 2px solid var(--borda);
+  box-shadow: 2px 2px 0 var(--borda);
+  cursor: pointer;
+  transition: left 300ms ease, top 300ms ease, background-color 150ms ease;
+}
 
-            <div class="filtros-bloco">
-              <h3 class="filtros-rotulo">TIPO</h3>
-              <div class="tipos" id="lista-tipos"></div>
-            </div>
+.btn-filtros:hover {
+  background: var(--amarelo);
+}
 
-            <div class="filtros-bloco">
-              <h3 class="filtros-rotulo">ORDENAR</h3>
-              <div class="ordem" id="lista-ordem">
-                <button type="button" class="opcao ativo" data-ordem="numero">
-                  ⇅ Nº Pokémon
-                </button>
-                <button type="button" class="opcao" data-ordem="nome">
-                  ⇅ Nome A→Z
-                </button>
-                <button type="button" class="opcao" data-ordem="hp">
-                  ⇅ HP (maior)
-                </button>
-              </div>
-            </div>
-          </aside>
+.btn-filtros:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--borda);
+}
 
-          <div class="conteudo-pokedex">
-            <div id="grid-cartoes"></div>
-          </div>
-        </div>
-      </section>
+.btn-filtros:focus-visible {
+  outline: 2px solid var(--amarelo);
+  outline-offset: 2px;
+}
 
-      <section
-        class="painel"
-        id="painel-buscar"
-        role="tabpanel"
-        aria-labelledby="aba-buscar"
-        hidden
-      >
-        <h2>Buscar</h2>
-        <p>Resultados da busca e para aaaparece aqui.</p>
-      </section>
+.layout-pokedex.filtros-fechados .btn-filtros {
+  top: 14px;
+  left: 14px;
+}
 
-      <section
-        class="painel"
-        id="painel-colecao"
-        role="tabpanel"
-        aria-labelledby="aba-colecao"
-        hidden
-      >
-        <h2 class="titulo-secao" id="contador-colecao">0 CAPTURADOS</h2>
-        <div id="lista-colecao"></div>
-      </section>
+.filtros {
+  flex: 0 0 268px;
+  min-width: 0;
+  overflow: hidden;
+  background: #1c1f4a;
+  border-right: 4px solid var(--azul);
+  color: #b9c0ee;
+  transition: flex-basis 300ms ease, border-width 300ms ease, visibility 0s;
+}
 
-      <section
-        class="painel"
-        id="painel-equipe"
-        role="tabpanel"
-        aria-labelledby="aba-equipe"
-        hidden
-      >
-        <h2>Equipe</h2>
-        <p>Monte sua equipe de pokémons</p>
-      </section>
+.filtros > * {
+  min-width: 264px;
+}
 
-      <div class="modal" id="modal-remover" hidden>
-        <img id="modal-img" class="model-img" src="" alt="" />
-        <div
-          class="modal-caixa"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-titulo"
-        >
-          <h3 id="modal-titulo" class="modal-img">REMOVER DA COLEÇÃO?</h3>
-          <p id="modal-texto" class="modal-texto"></p>
-          <div class="modal-botoes">
-            <button type="button" id="modal-nao" class="btn-nao">NÃO</button>
-            <button type="button" id="modal-sim" class="btn-sim">
-              SIM, REMOVER
-            </button>
-          </div>
-        </div>
-      </div>
-      <script src="pokedex.js"></script>
-    </main>
-  </body>
-</html>
+.layout-pokedex.filtros-fechados .filtros {
+  flex: 0 0 0;
+  width: 0;
+  border-right-width: 0;
+  visibility: hidden;
+  transition: flex-basis 300ms ease, border-width 300ms ease,
+    visibility 0s 300ms;
+}
+
+.conteudo-pokedex {
+  flex: 1;
+  min-width: 0;
+  padding: 24px;
+  transition: padding-top 300ms ease;
+}
+
+.layout-pokedex.filtros-fechados .conteudo-pokedex {
+  padding-top: 64px;
+}
+
+#grid-cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+#grid-cartoes .cartao-pokemon {
+  width: 100%;
+  min-width: 0;
+}
+
+.filtros-topo {
+  padding: 22px 14px 14px;
+}
+
+.painel .filtros-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 6px;
+  font-family: 'Pixel', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.contador {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8a90c0;
+}
+
+.filtros-bloco {
+  padding: 16px 14px;
+  border-top: 1px solid rgb(255 255 255 / 8%);
+}
+
+.filtros-rotulo {
+  margin: 0 0 12px;
+  font-family: 'Pixel', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #7f86b8;
+}
+
+.tipos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.ordem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.opcao {
+  height: 30px;
+  padding: 0 10px;
+  text-align: left;
+  background: #24285a;
+  border: 2px solid #3a3f78;
+  border-radius: 0;
+  color: #8a90c0;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.ordem .opcao {
+  height: 44px;
+  font-size: 13px;
+}
+
+.opcao:hover {
+  color: #fff;
+  background: #2d3270;
+}
+
+.opcao.ativo {
+  color: #fff;
+  background: #3f4fd1;
+  border-color: #3f4fd1;
+}
+
+.opcao:focus-visible {
+  outline: 2px solid var(--amarelo);
+  outline-offset: 2px;
+}
+
+.busca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  max-width: 512px;
+  height: 40px;
+  padding: 0 16px;
+  background: #fff;
+  border: 2px solid var(--borda);
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 var(--borda);
+}
+
+.busca svg {
+  flex-shrink: 0;
+  color: var(--azul-1);
+}
+
+.busca input,
+.busca input:focus {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--borda);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 15px;
+}
+
+.busca input::placeholder {
+  color: #8a8fb0;
+}
+
+.acoes {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.btn-icone {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  color: #fff;
+  background: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.btn-icone:hover {
+  background: rgb(255 255 255 / 20%);
+}
+
+.busca:focus-within {
+  box-shadow: 3px 3px 0 var(--amarelo);
+}
+
+.aba:hover {
+  color: #fff;
+}
+
+.btn-icone:focus-visible,
+.aba:focus-visible {
+  outline: 2px solid var(--amarelo);
+  outline-offset: 2px;
+}
+
+.abas {
+  display: flex;
+  gap: 4px;
+  padding: 0 18px;
+  overflow-x: auto;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+.aba {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  margin-top: 8px;
+  padding: 0 14px;
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: var(--texto-aba);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.aba[aria-selected='true'] {
+  color: #fff;
+  background: rgb(255 255 255 / 15%);
+  border-bottom-color: var(--amarelo);
+}
+
+.badge-aba {
+  min-width: 18px;
+  padding: 1px 5px;
+  background: var(--amarelo);
+  color: var(--borda);
+  border-radius: 9px;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.painel {
+  max-width: 900px;
+  padding: 28px 24px;
+}
+
+.painel[hidden] {
+  display: none;
+}
+
+.painel h2 {
+  margin: 0 0 8px;
+  font-family: 'PixelTitulo', monospace;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .layout-pokedex {
+    flex-direction: column;
+  }
+
+  .filtros {
+    flex: none;
+    border-right: 0;
+    border-bottom: 4px solid var(--azul);
+  }
+
+  .layout-pokedex.filtros-fechados .filtros {
+    display: none;
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.cartao-pokemon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 16px 12px;
+  background: color-mix(in srgb, var(--cor) 12%, #fff);
+  border: 3px solid var(--borda);
+  border-top: 6px solid var(--cor);
+  box-shadow: 4px 4px 0 var(--borda);
+  color: var(--borda);
+}
+
+.btn-captura {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: white;
+  color: #666;
+  border: 2px solid #202031;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn-captura:hover {
+  transform: scale(1.1);
+}
+
+.btn-captura.capturado {
+  background: #b9f5c8;
+  color: #218838;
+}
+
+.cartao-numero {
+  align-self: flex-start;
+  font-family: 'Pixel', monospace;
+  font-size: 11px;
+  color: var(--cor);
+}
+
+.cartao-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.cartao-nome {
+  margin: 8px 0 6px;
+  font-family: 'PixelTitulo', monospace;
+  font-size: 16px;
+}
+
+.cartao-tipos {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badge-tipo {
+  padding: 2px 8px;
+  background: var(--cor);
+  color: #fff;
+  border: 2px solid var(--borda);
+  font-family: 'Pixel', monospace;
+  font-size: 8px;
+}
+
+.cartao-hp {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.barra {
+  width: 100%;
+  height: 6px;
+  margin-top: 4px;
+  background: #fff;
+  border: 1px solid var(--borda);
+}
+
+.barra-preenchida {
+  height: 100%;
+}
+
+.cartao-medidas {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #5a5f85;
+}
+
+.titulo-secao {
+  font-family: 'Pixel', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#painel-colecao {
+  max-width: none;
+}
+
+#lista-colecao {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.item-colecao {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #fff;
+  color: var(--borda);
+  border: 3px solid var(--borda);
+  box-shadow: 4px 4px 0 var(--borda);
+}
+
+.item-img {
+  width: 64px;
+  height: 64px;
+  padding: 4px;
+  background: color-mix(in srgb, var(--cor) 15%, #fff);
+  border: 2px solid var(--borda);
+  object-fit: contain;
+}
+
+.btn-remover {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  color: #c00000;
+  border: 2px solid var(--borda);
+  box-shadow: 2px 2px 0 var(--borda);
+  cursor: pointer;
+}
+
+.btn-remover:hover {
+  background: #fdeaea;
+}
+
+.vazio {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: safe center;
+  gap: 16px;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgb(0 0 0 / 55%);
+  backdrop-filter: blur(4px);
+}
+
+.modal > img {
+  flex-shrink: 0;
+  width: auto;
+  max-width: 90vw;
+  max-height: 30vh;
+  object-fit: contain;
+}
+
+.modal-caixa {
+  flex-shrink: 0;
+  width: min(380px, 90vw);
+  padding: 24px;
+  text-align: center;
+  background: #fff;
+  color: var(--borda);
+  border: 4px solid var(--borda);
+  box-shadow: 8px 8px 0 #151523;
+}
+
+.modal-titulo {
+  margin: 12px 0 8px;
+  font-family: 'Pixel', monospace;
+  font-size: 12px;
+}
+
+.modal-texto {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #494754;
+}
+
+.modal-botoes {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-botoes button {
+  flex: 1;
+  height: 44px;
+  border: 2px solid var(--borda);
+  box-shadow: 3px 3px 0 var(--borda);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-nao {
+  background: #fff;
+  color: var(--borda);
+}
+
+.btn-sim {
+  background: #c00000;
+  color: #fff;
+}
+
+.modal-botoes button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--borda);
+}
+
+#grid-cartoes {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 16px;
+  width: 100%;
+  flex-direction: row !important;
+}
+
+#grid-cartoes > .cartao-pokemon {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0;
+  flex: none;
+}
+
+.layout-pokedex {
+  width: 100%;
+}
+
+.conteudo-pokedex {
+  flex: 1 1 0;
+  width: 100%;
+  min-width: 0;
+}
+
+#grid-cartoes {
+  width: 100%;
+  min-width: 0;
+}
+
+/* ============================================================
+   ABA EQUIPE
+   ============================================================ */
+
+#painel-equipe {
+  max-width: none;
+}
+
+/* Cabecalho: titulo e contador a esquerda, botao a direita */
+.equipe-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* .painel h2 ja define fonte e margem; o seletor mais especifico garante o ajuste */
+.painel .equipe-titulo {
+  margin: 0 0 6px;
+  font-family: 'Pixel', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.equipe-contador {
+  margin: 0;
+  font-family: 'Pixel', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+.btn-equipe-adicionar {
+  height: 44px;
+  padding: 0 18px;
+  background: var(--amarelo);
+  color: var(--borda);
+  border: 2px solid var(--borda);
+  box-shadow: 3px 3px 0 var(--borda);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-equipe-adicionar:hover:not(:disabled) {
+  background: #fff;
+}
+
+.btn-equipe-adicionar:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--borda);
+}
+
+.btn-equipe-adicionar:disabled,
+.btn-seletor-adicionar:disabled {
+  background: #c9ccdf;
+  color: #6b7090;
+  cursor: not-allowed;
+}
+
+.btn-equipe-adicionar:focus-visible,
+.btn-seletor-adicionar:focus-visible,
+.seletor-fechar:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+}
+
+/* Aviso de limite atingido (aba e seletor) */
+.equipe-aviso {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  background: #fff3b0;
+  color: var(--borda);
+  border: 2px solid var(--borda);
+  box-shadow: 3px 3px 0 var(--borda);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Grade dos cards da equipe */
+#lista-equipe {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* O botao de remover (.btn-remover, da Colecao) fica no canto do card */
+.cartao-equipe .btn-remover {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* Mensagem de equipe vazia */
+.equipe-vazio {
+  padding: 32px 16px;
+  border: 3px dashed #7f86b8;
+  font-size: 14px;
+}
+
+.equipe-vazio-titulo {
+  margin: 0 0 8px;
+  font-family: 'Pixel', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* ---------- Seletor de Pokemon ---------- */
+
+/* O fundo escuro vem da classe .modal ja existente */
+.seletor-caixa {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(560px, 94vw);
+  max-height: min(90vh, 720px);
+  padding: 16px;
+  background: #fff;
+  color: var(--borda);
+  border: 4px solid var(--borda);
+  box-shadow: 8px 8px 0 #151523;
+}
+
+.seletor-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.seletor-titulo {
+  margin: 0;
+  font-family: 'Pixel', monospace;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.seletor-fechar {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  background: #fff;
+  color: var(--borda);
+  border: 2px solid var(--borda);
+  box-shadow: 2px 2px 0 var(--borda);
+  cursor: pointer;
+}
+
+.seletor-fechar:hover {
+  background: var(--amarelo);
+}
+
+.seletor-busca {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  background: #fff;
+  color: var(--borda);
+  border: 2px solid var(--borda);
+  box-shadow: 3px 3px 0 var(--borda);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  outline: 0;
+}
+
+.seletor-busca:focus {
+  box-shadow: 3px 3px 0 var(--amarelo);
+}
+
+/* A lista rola dentro da caixa, sem rolar a pagina inteira */
+#seletor-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  overflow-y: auto;
+  /* espaco para a sombra dos itens nao ser cortada */
+  padding: 0 6px 6px 0;
+}
+
+#seletor-lista .item-colecao {
+  flex-shrink: 0;
+}
+
+/* Estes textos nao tinham estilo na Colecao; ficam restritos ao seletor */
+#seletor-lista .item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+#seletor-lista .item-numero {
+  font-family: 'Pixel', monospace;
+  font-size: 10px;
+  color: var(--cor);
+}
+
+#seletor-lista .item-nome {
+  margin: 4px 0 6px;
+  font-family: 'PixelTitulo', monospace;
+  font-size: 14px;
+}
+
+#seletor-lista .cartao-tipos {
+  justify-content: flex-start;
+}
+
+.btn-seletor-adicionar {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 12px;
+  background: #3f4fd1;
+  color: #fff;
+  border: 2px solid var(--borda);
+  box-shadow: 2px 2px 0 var(--borda);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-seletor-adicionar:hover:not(:disabled) {
+  background: #2f3ea8;
+}
+
+.btn-seletor-adicionar:active:not(:disabled) {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--borda);
+}
+
+/* Telas pequenas: botao do seletor ocupa a linha de baixo do item */
+@media (max-width: 480px) {
+  .btn-equipe-adicionar {
+    width: 100%;
+  }
+
+  #seletor-lista .item-colecao {
+    flex-wrap: wrap;
+  }
+
+  .btn-seletor-adicionar {
+    width: 100%;
+  }
+}
