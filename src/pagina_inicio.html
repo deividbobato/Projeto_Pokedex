@@ -55,10 +55,10 @@
         <div class="acoes">
           <button
             class="btn-icone"
-            id="btn-aleatorio"
+            id="btn-colecao-topo"
             type="button"
-            title="Pokémon aleatório"
-            aria-label="Pokémon aleatório"
+            title="Minha coleção"
+            aria-label="Minha coleção"
           >
             <svg
               width="18"
@@ -74,6 +74,7 @@
               <circle cx="12" cy="12" r="3" />
               <path d="M3 12h6M15 12h6" />
             </svg>
+            <span id="badge-topo" class="badge-topo" hidden>0</span>
           </button>
           <button
             class="btn-icone"
@@ -99,7 +100,7 @@
         </div>
       </div>
 
-      <nav class="abas" role="tablist" arial-label="secoes">
+      <nav class="abas" role="tablist" aria-label="secoes">
         <button
           class="aba"
           role="tab"
@@ -129,7 +130,7 @@
           role="tab"
           type="button"
           id="aba-buscar"
-          arial-controls="painel-buscar"
+          aria-controls="painel-buscar"
           aria-selected="false"
           tabindex="-1"
         >
@@ -141,7 +142,7 @@
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
-            arial-hidden="true"
+            aria-hidden="true"
           >
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.5-3.5" />
@@ -154,7 +155,7 @@
           role="tab"
           type="button"
           id="aba-colecao"
-          arial-controls="painel-colecao"
+          aria-controls="painel-colecao"
           aria-selected="false"
           tabindex="-1"
         >
@@ -167,7 +168,7 @@
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            arial-hidden="true"
+            aria-hidden="true"
           >
             <path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2z" />
             <path d="M22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" />
@@ -285,8 +286,38 @@
         aria-labelledby="aba-buscar"
         hidden
       >
-        <h2>Buscar</h2>
-        <p>Resultados da busca e para aaaparece aqui.</p>
+        <div class="layout-pokedex" id="layout-buscar">
+          <div class="conteudo-pokedex conteudo-busca">
+            <div class="busca-topo">
+              <div class="busca-grande">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-3.5-3.5" />
+                </svg>
+                <input
+                  id="campo-busca-painel"
+                  type="search"
+                  placeholder="Nome ou número do Pokémon..."
+                  aria-label="Buscar Pokémon por nome ou número"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+              </div>
+              <div class="chips" id="busca-chips"></div>
+            </div>
+
+            <div id="lista-busca"></div>
+          </div>
+        </div>
       </section>
 
       <section
@@ -299,8 +330,7 @@
         <h2 class="titulo-secao" id="contador-colecao">0 CAPTURADOS</h2>
         <div id="lista-colecao"></div>
       </section>
-<!--EQUIPE POKEMON  -->
-
+      <!--EQUIPE POKEMON  -->
 
       <section
         class="painel"
@@ -309,77 +339,77 @@
         aria-labelledby="aba-equipe"
         hidden
       >
-          <!-- Cabecalho da aba: titulo, contador e botao de adicionar -->
-          <div class="equipe-topo">
-            <div>
-              <h2 class="equipe-titulo">MINHA EQUIPE </h2>
-              <p class="equipe-contador" id="contador-equipe">0/6 POKÉMON</p>
-            </div>
-            <button type="button" class="btn-equipe-adicionar" id="btn-equipe-adicionar">
-               + ADICIONAR POKÉMON
-            </button>
+        <!-- Cabecalho da aba: titulo, contador e botao de adicionar -->
+        <div class="equipe-topo">
+          <div>
+            <h2 class="equipe-titulo">MINHA EQUIPE</h2>
+            <p class="equipe-contador" id="contador-equipe">0/6 POKÉMON</p>
           </div>
+          <button
+            type="button"
+            class="btn-equipe-adicionar"
+            id="btn-equipe-adicionar"
+          >
+            + ADICIONAR POKÉMON
+          </button>
+        </div>
 
-          <!-- Aviso exibido somente quando a equipe atinge o limite de 6 -->
+        <!-- Aviso exibido somente quando a equipe atinge o limite de 6 -->
         <p class="equipe-aviso" id="aviso-equipe" role="status" hidden></p>
-      
-          <!-- Os cards da equipe sao montados aqui pelo pokedex.js -->
+
+        <!-- Os cards da equipe sao montados aqui pelo pokedex.js -->
         <div id="lista-equipe"></div>
       </section>
 
       <div class="modal" id="modal-equipe" hidden>
-      <div
-        class="seletor-caixa"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="seletor-titulo"
-      >
-        <div class="seletor-topo">
-          <h3 id="seletor-titulo" class="seletor-titulo">ESCOLHER POKÉMON</h3>
-          <button
-            type="button"
-            id="seletor-fechar"
-            class="seletor-fechar"
-            aria-label="Fechar seletor"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              aria-hidden="true"
+        <div
+          class="seletor-caixa"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="seletor-titulo"
+        >
+          <div class="seletor-topo">
+            <h3 id="seletor-titulo" class="seletor-titulo">ESCOLHER POKÉMON</h3>
+            <button
+              type="button"
+              id="seletor-fechar"
+              class="seletor-fechar"
+              aria-label="Fechar seletor"
             >
-              <path d="m5 5 14 14M19 5 5 19" />
-            </svg>
-          </button>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                aria-hidden="true"
+              >
+                <path d="m5 5 14 14M19 5 5 19" />
+              </svg>
+            </button>
+          </div>
+
+          <input
+            id="seletor-busca"
+            class="seletor-busca"
+            type="search"
+            placeholder="Pesquisar por nome ou número"
+            aria-label="Pesquisar Pokémon para a equipe"
+            autocomplete="off"
+            spellcheck="false"
+          />
+
+          <p class="equipe-aviso" id="seletor-aviso" role="status" hidden></p>
+
+          <!-- A lista de Pokemon disponiveis e montada pelo pokedex.js -->
+          <div id="seletor-lista"></div>
         </div>
-
-        <input
-          id="seletor-busca"
-          class="seletor-busca"
-          type="search"
-          placeholder="Pesquisar por nome ou número"
-          aria-label="Pesquisar Pokémon para a equipe"
-          autocomplete="off"
-          spellcheck="false"
-        />
-
-        <p class="equipe-aviso" id="seletor-aviso" role="status" hidden></p>
-
-        <!-- A lista de Pokemon disponiveis e montada pelo pokedex.js -->
-        <div id="seletor-lista"></div>
       </div>
-    </div>
-  
-
 
       <!-- MUDANCAS SOBRE A EQUIPE-->
 
-
-        
       <div class="modal" id="modal-remover" hidden>
         <img id="modal-img" class="model-img" src="" alt="" />
         <div
@@ -388,7 +418,7 @@
           aria-modal="true"
           aria-labelledby="modal-titulo"
         >
-          <h3 id="modal-titulo" class="modal-img">REMOVER DA COLEÇÃO?</h3>
+          <h3 id="modal-titulo" class="modal-titulo">REMOVER DA COLEÇÃO?</h3>
           <p id="modal-texto" class="modal-texto"></p>
           <div class="modal-botoes">
             <button type="button" id="modal-nao" class="btn-nao">NÃO</button>
@@ -398,7 +428,75 @@
           </div>
         </div>
       </div>
-      <script src="pokedex.js"></script>
+      
     </main>
+    <footer class="rodape">
+      <nav class="rodape-abas" aria-label="Navegação principal">
+        <button class="aba-rodape ativa" data-aba="pokedex">
+          <svg
+            viewBox="0 0 24 24"
+            width="21"
+            height="21"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M3 10.5 12 3l9 7.5V21H3z" />
+            <path d="M9 21v-7h6v7" />
+          </svg>
+          <span>Pokédex</span>
+        </button>
+
+        <button class="aba-rodape" data-aba="buscar">
+          <svg
+            viewBox="0 0 24 24"
+            width="21"
+            height="21"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="10.5" cy="10.5" r="7" />
+            <path d="m16 16 5 5" />
+          </svg>
+          <span>Buscar</span>
+        </button>
+
+        <button class="aba-rodape" data-aba="colecao">
+          <svg
+            viewBox="0 0 24 24"
+            width="21"
+            height="21"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          <span>Coleção</span>
+        </button>
+
+        <button class="aba-rodape" data-aba="equipe">
+          <svg
+            viewBox="0 0 24 24"
+            width="21"
+            height="21"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="m14.5 17.5 3-3 3 3" />
+            <path d="m17.5 14.5 3 3-3 3" />
+            <path d="m5 5 14 14M19 5 5 19" />
+          </svg>
+          <span>Equipe</span>
+        </button>
+      </nav>
+    </footer>
+
+    <script src="pokedex.js"></script>
+    
   </body>
 </html>
