@@ -953,19 +953,6 @@ async function buscarNaApi(texto) {
   }
 }
 
-// Botão aleatório: sorteia, busca na API e abre a aba Buscar
-document.getElementById("btn-aleatorio").addEventListener("click", async () => {
-  try {
-    const id = Math.floor(Math.random() * LIMITE_POKEMONS) + 1;
-    const p = await obterPokemon(id);
-    adicionarNaLista(p);
-    aplicarBusca(p.name, null);
-  } catch (erro) {
-    mostrarAba("aba-buscar");
-    mostrarStatus(statusBusca, "erro", mensagemErro(erro));
-  }
-});
-
 async function iniciar() {
   localStorage.removeItem("pokedexData"); // dados fixos antigos
   carregarColecao();
