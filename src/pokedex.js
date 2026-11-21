@@ -1,235 +1,3 @@
-const listaPokemons = [
-  {
-    id: 384,
-    name: "rayquaza",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/384.png",
-    types: ["Dragon", "Flying"],
-    height: 7.0,
-    weight: 206.5,
-    category: "Sky High",
-    abilities: ["Air Lock"],
-    weakness: ["Ice", "Rock", "Dragon", "Fairy"],
-    resistances: ["Fire", "Water", "Grass", "Fighting", "Bug"],
-    stats: {
-      hp: 105,
-      attack: 150,
-      defense: 90,
-      specialAttack: 150,
-      specialDefense: 90,
-      speed: 95,
-      total: 680,
-    },
-  }, //Mew
-  {
-    id: 151,
-    name: "mew",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/151.png",
-    types: ["Psychic"],
-    height: 0.4,
-    weight: 4.0,
-    category: "New Species",
-    abilities: ["Synchronize"],
-    weakness: ["Bug", "Ghost", "Dark"],
-    resistances: [],
-    stats: {
-      hp: 100,
-      attack: 100,
-      defense: 100,
-      specialAttack: 100,
-      specialDefense: 100,
-      speed: 100,
-      total: 600,
-    },
-  }, // charmander
-  {
-    id: 4,
-    name: "charmander",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-    types: ["Fire"],
-    height: 0.6,
-    weight: 8.5,
-    category: "Lizard",
-    abilities: ["Blaze"],
-    weakness: ["Water", "Ground", "Rock"],
-    resistances: ["Grass", "Bug", "Fairy"],
-    stats: {
-      hp: 39,
-      attack: 52,
-      defense: 43,
-      specialAttack: 60,
-      specialDefense: 50,
-      speed: 65,
-      total: 309,
-    },
-  },
-  {
-    // rattata
-    id: 19,
-    name: "rattata",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/19.png",
-    types: ["Normal"],
-    height: 0.3,
-    weight: 3.5,
-    category: "Mouse",
-    abilities: ["Run Away", "Guts", "One-Hit Wonder"],
-    weakness: ["Fighting"],
-    resistances: ["Poison", "Bug", "Fairy"],
-    stats: {
-      hp: 30,
-      attack: 56,
-      defense: 38,
-      specialAttack: 35,
-      specialDefense: 45,
-      speed: 72,
-      total: 276,
-    },
-  },
-  {
-    // pidgey
-    id: 16,
-    name: "pidgey",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png",
-    types: ["Normal", "Flying"],
-    height: 0.3,
-    weight: 1.8,
-    category: "Tiny Bird",
-    abilities: ["Keen Eye", "Tangled Feet", "Big Pecks"],
-    weakness: ["Electric", "Ice", "Rock"],
-    resistances: ["Grass", "Bug", "Fighting"],
-    stats: {
-      hp: 40,
-      attack: 45,
-      defense: 40,
-      specialAttack: 35,
-      specialDefense: 35,
-      speed: 56,
-      total: 251,
-    },
-  },
-  {
-    // pikachu
-    id: 25,
-    name: "pikachu",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-    types: ["Electric"],
-    height: 0.4,
-    weight: 6.0,
-    category: "Mouse",
-    abilities: ["Static", "Volt Absorb"],
-    weakness: ["Ground"],
-    resistances: ["Flying", "Steel"],
-    stats: {
-      hp: 35,
-      attack: 55,
-      defense: 40,
-      specialAttack: 50,
-      specialDefense: 50,
-      speed: 90,
-      total: 320,
-    },
-  },
-  {
-    // squirtle
-    id: 7,
-    name: "squirtle",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-    types: ["Water"],
-    height: 0.5,
-    weight: 9.0,
-    category: "Tiny Turtle",
-    abilities: ["Torrent", "Rain Dish"],
-    weakness: ["Electric", "Grass"],
-    resistances: ["Fire", "Water", "Ice", "Steel"],
-    stats: {
-      hp: 44,
-      attack: 48,
-      defense: 65,
-      specialAttack: 50,
-      specialDefense: 64,
-      speed: 43,
-      total: 314,
-    },
-  },
-  {
-    // bulbasaur
-    id: 1,
-    name: "bulbasaur",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-    types: ["Grass", "Poison"],
-    height: 0.7,
-    weight: 6.9,
-    category: "Seed",
-    abilities: ["Overgrow", "Chlorophyll"],
-    weakness: ["Fire", "Ice", "Flying", "Psychic"],
-    resistances: ["Water", "Electric", "Grass", "Fighting"],
-    stats: {
-      hp: 45,
-      attack: 49,
-      defense: 49,
-      specialAttack: 65,
-      specialDefense: 65,
-      speed: 45,
-      total: 318,
-    },
-  },
-  {
-    //snorlax
-    id: 143,
-    name: "snorlax",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png",
-    types: ["Normal"],
-    height: 1.2,
-    weight: 46.0,
-    category: "Sleeping",
-    abilities: ["Immunity", "Thick Fat", "Gluttony"],
-    weakness: ["Fighting"],
-    resistances: ["Ghost"],
-    stats: {
-      hp: 160,
-      attack: 110,
-      defense: 65,
-      specialAttack: 65,
-      specialDefense: 65,
-      speed: 30,
-      total: 500,
-    },
-  },
-  {
-    //  blastoise
-    id: 9,
-    name: "blastoise",
-    image:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/9.png",
-    types: ["Water"],
-    height: 1.0,
-    weight: 85.5,
-    category: "Shellfish",
-    abilities: ["Torrent", "Rain Dish"],
-    weakness: ["Electric", "Grass"],
-    resistances: ["Fire", "Water", "Ice", "Steel"],
-    stats: {
-      hp: 79,
-      attack: 83,
-      defense: 100,
-      specialAttack: 85,
-      specialDefense: 100,
-      speed: 78,
-      total: 535,
-    },
-  },
-];
-
-console.log(listaPokemons);
-
 //logica pokedex
 //logica pokedex
 let estadoPokemons = [];
@@ -324,28 +92,6 @@ const ICONE_LIXEIRA = `
         <path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 10v6M14 10v6"/>
     </svg>`;
 
-function inicializarEstado() {
-  if (typeof listaPokemons === "undefined") {
-    console.error("listaPokemons não foi encontrada.");
-    estadoPokemons = [];
-    return;
-  }
-
-  let dadosSalvos = null;
-  try {
-    dadosSalvos = JSON.parse(localStorage.getItem("pokedexData"));
-  } catch (erro) {
-    dadosSalvos = null;
-  }
-
-  if (Array.isArray(dadosSalvos) && dadosSalvos.length > 0) {
-    estadoPokemons = dadosSalvos;
-  } else {
-    estadoPokemons = listaPokemons;
-    localStorage.setItem("pokedexData", JSON.stringify(estadoPokemons));
-  }
-}
-
 function carregarColecao() {
   try {
     const salvo = JSON.parse(localStorage.getItem(CHAVE_COLECAO));
@@ -405,9 +151,10 @@ function renderizarTipos() {
 }
 
 function renderizarColecao() {
+  renderizarBusca();
   const lista = document.getElementById("lista-colecao");
   const capturados = colecao
-    .map((id) => estadoPokemons.find((p) => p.id === id))
+    .map((id) => cachePokemons.get(id))
     .filter(Boolean);
 
   document.getElementById("contador-colecao").textContent =
@@ -456,7 +203,7 @@ document.getElementById("lista-colecao").addEventListener("click", (e) => {
 let idParaRemover = null;
 
 function pedirRemocao(id) {
-  const p = estadoPokemons.find((x) => x.id === id);
+  const p = cachePokemons.get(id);
   if (!p) return;
 
   idParaRemover = id;
@@ -483,6 +230,46 @@ document.getElementById("modal-sim").addEventListener("click", () => {
   fecharModal();
 });
 
+function criarCartao(pokemon) {
+  const hp = pokemon.stats.hp;
+  const cartao = document.createElement("div");
+  cartao.className = "cartao-pokemon";
+  cartao.style.setProperty("--cor", corDoTipo(pokemon));
+
+  cartao.innerHTML = `
+    <span class="cartao-numero">${formatarNumero(pokemon.id)}</span>
+
+    <button
+      type="button"
+      class="btn-captura ${estaCapturado(pokemon.id) ? "capturado" : ""}"
+      data-captura-id="${pokemon.id}"
+      aria-label="capturar Pokémon"
+    >
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M3 12h18" stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
+
+    <img class="cartao-img" src="${pokemon.image}" alt="${pokemon.name}" loading="lazy">
+    <h3 class="cartao-nome">${nomeBonito(pokemon.name)}</h3>
+    <div class="cartao-tipos">${htmlTipos(pokemon)}</div>
+
+    <div class="cartao-hp"><span>HP</span><span>${hp}</span></div>
+    <div class="barra">
+      <div class="barra-preenchida"
+        style="width:${Math.min((hp / 255) * 100, 100)}%; background:${corHp(hp)}"></div>
+    </div>
+
+    <div class="cartao-medidas">
+      <span>${pokemon.height.toFixed(1)}m</span>
+      <span>${pokemon.weight.toFixed(1)}kg</span>
+    </div>
+  `;
+  return cartao;
+}
+
 function renderizarPokedex() {
   const container = document.getElementById("grid-cartoes");
   const lista = obterListaFiltrada();
@@ -492,64 +279,13 @@ function renderizarPokedex() {
 
   container.innerHTML = "";
 
-  if (lista.length === 0) {
+  // só mostra "nenhum encontrado" depois que algo já foi carregado
+  if (lista.length === 0 && estadoPokemons.length > 0) {
     container.innerHTML = "<p>Nenhum Pokémon encontrado.</p>";
     return;
   }
 
-  lista.forEach((pokemon) => {
-    const hp = pokemon.stats.hp;
-    const cartao = document.createElement("div");
-    cartao.className = "cartao-pokemon";
-    cartao.style.setProperty("--cor", corDoTipo(pokemon));
-
-    cartao.innerHTML = `
-            <span class="cartao-numero">${formatarNumero(pokemon.id)}</span>
-
-            <button
-                type="button"
-                class="btn-captura ${estaCapturado(pokemon.id) ? "capturado" : ""}"
-                data-captura-id="${pokemon.id}"
-                aria-label="capturar Pokémon"
-            >
-                <svg viewBox="0 0 24 24" width="24" height="24">
-                    <circle 
-                    cx="12" 
-                    cy="12" 
-                    r="9"
-                    fill="none" 
-                    stroke="currentColor" 
-                    stroke-width="2"/>
-                    
-                    <path d="M3 12h18"
-                        stroke="currentColor" stroke-width="2"/>
-
-                    <circle 
-                        cx="12" 
-                        cy="12" 
-                        r="3"
-                        fill="none" 
-                        stroke="currentColor" stroke-width="2"/>
-                </svg>
-            </button>
-
-            <img class="cartao-img" src="${pokemon.imagem || pokemon.image}" alt="${pokemon.name}">
-            <h3 class="cartao-nome"> ${nomeBonito(pokemon.name)}</h3>
-            <div class="cartao-tipos">${htmlTipos(pokemon)}</div>
-
-            <div class="cartao-hp"><span>HP</span><span>${hp}</span></div>
-            <div class="barra">
-                <div class="barra-preenchida"
-                style="width:${Math.min((hp / 255) * 100, 100)}%; background:${corHp(hp)}"></div>
-            </div>
-
-            <div class="cartao-medidas">
-                <span>${pokemon.height.toFixed(1)}m</span>
-                <span>${pokemon.weight.toFixed(1)}kg</span>
-           </div>
-        `;
-    container.appendChild(cartao);
-  });
+  lista.forEach((pokemon) => container.appendChild(criarCartao(pokemon)));
 }
 
 document
@@ -615,13 +351,6 @@ abas.forEach((aba) => {
   aba.addEventListener("click", () => mostrarAba(aba.id));
 });
 
-inicializarEstado();
-carregarColecao();
-renderizarTipos();
-renderizarPokedex();
-renderizarColecao();
-
-
 const layoutPokedex = document.querySelector(".layout-pokedex");
 const btnFiltros = document.getElementById("btn-filtros");
 const CHAVE_FILTROS = "pokedexFiltrosFechados";
@@ -650,3 +379,124 @@ try {
 } catch (erro) {
   aplicarEstadoFiltros(false);
 }
+
+const POR_PAGINA = 20;
+let proximoOffset = 0;
+let totalNaApi = 0;
+let carregando = false;
+let buscaAtual = 0;
+let pokemonBuscado = null;
+
+const conteudoPokedex = document.querySelector(".conteudo-pokedex");
+const statusPokedex = document.createElement("div");
+statusPokedex.setAttribute("role", "status");
+conteudoPokedex.prepend(statusPokedex);
+
+const btnMais = document.createElement("button");
+btnMais.type = "button";
+btnMais.className = "btn-mais";
+btnMais.textContent = "CARREGAR MAIS";
+btnMais.hidden = true;
+btnMais.addEventListener("click", carregarMais);
+conteudoPokedex.appendChild(btnMais);
+
+document.getElementById("painel-buscar").innerHTML = `
+  <h2>Buscar</h2>
+  <p>Digite o nome ou número exato na barra de busca e aperte Enter.</p>
+  <div id="status-busca"></div>
+  <div id="resultado-busca" class="resultado-busca"></div>`;
+const statusBusca = document.getElementById("status-busca");
+const resultadoBusca = document.getElementById("resultado-busca");
+
+function mostrarStatus(el, tipo, texto = "", aoTentar = null) {
+  el.innerHTML = "";
+  if (!tipo) return;
+  const caixa = document.createElement("div");
+  caixa.className = "status " + tipo;
+  if (tipo === "carregando") caixa.innerHTML = '<span class="spinner"></span>';
+  caixa.append(texto);
+  if (aoTentar) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = "TENTAR NOVAMENTE";
+    b.addEventListener("click", aoTentar);
+    caixa.append(b);
+  }
+  el.appendChild(caixa);
+}
+
+async function carregarMais() {
+  if (carregando) return;
+  carregando = true;
+  btnMais.hidden = true;
+  mostrarStatus(statusPokedex, "carregando", "Carregando Pokémons...");
+  try {
+    const { total, pokemons } = await listarPokemons(proximoOffset, POR_PAGINA);
+    totalNaApi = total;
+    estadoPokemons.push(...pokemons);
+    proximoOffset += POR_PAGINA;
+    mostrarStatus(statusPokedex, "");
+  } catch (erro) {
+    console.error(erro);
+    mostrarStatus(statusPokedex, "erro", mensagemErro(erro), carregarMais);
+  } finally {
+    carregando = false;
+    btnMais.hidden = estadoPokemons.length === 0 || proximoOffset >= totalNaApi;
+    renderizarPokedex();
+  }
+}
+
+function renderizarBusca() {
+  resultadoBusca.innerHTML = "";
+  if (pokemonBuscado) resultadoBusca.appendChild(criarCartao(pokemonBuscado));
+}
+
+async function buscarPokemon(termo) {
+  termo = termo.trim().toLowerCase();
+  if (!termo) return;
+  const minhaBusca = ++buscaAtual;
+  mostrarAba("aba-buscar");
+  pokemonBuscado = null;
+  renderizarBusca();
+  mostrarStatus(statusBusca, "carregando", `Buscando "${termo}"...`);
+  try {
+    const p = await obterPokemon(termo);
+    if (minhaBusca !== buscaAtual) return;
+    pokemonBuscado = p;
+    mostrarStatus(statusBusca, "");
+  } catch (erro) {
+    if (minhaBusca !== buscaAtual) return;
+    mostrarStatus(statusBusca, "erro", mensagemErro(erro));
+  }
+  renderizarBusca();
+}
+
+document.getElementById("campo-busca").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") buscarPokemon(e.target.value);
+});
+
+document.getElementById("btn-aleatorio").addEventListener("click", () => {
+  buscarPokemon(String(Math.floor(Math.random() * LIMITE_POKEMONS) + 1));
+});
+
+resultadoBusca.addEventListener("click", (e) => {
+  const botao = e.target.closest("[data-captura-id]");
+  if (!botao) return;
+  const id = Number(botao.dataset.capturaId);
+  if (estaCapturado(id)) return pedirRemocao(id);
+  capturar(id);
+  renderizarPokedex();
+  renderizarColecao();
+});
+
+async function iniciar() {
+  localStorage.removeItem("pokedexData"); 
+  carregarColecao();
+  renderizarTipos();
+  carregarMais();
+  // baixa os capturados que não estão na primeira página
+  await Promise.allSettled(colecao.map((id) => obterPokemon(id)));
+   renderizarColecao();
+  renderizarPokedex();
+}
+iniciar();
