@@ -1,0 +1,129 @@
+
+.btn-ver-detalhes {
+  border: 2px solid var(--borda, #202031);
+  background: var(--azul, #4145bf);
+  color: #fff;
+  border-radius: 5px;
+  padding: 9px 12px;
+  margin-top: 12px;
+  font: 700 12px 'Poppins', Arial, sans-serif;
+  cursor: pointer;
+}
+.btn-ver-detalhes:hover,
+.btn-ver-detalhes:focus-visible { background: #2f3ea8; outline-offset: 3px; }
+
+.detalhes-modal { z-index: 140; }
+.detalhes-janela {
+  width: min(760px, 94vw);
+  max-height: min(88vh, 900px);
+  overflow-y: auto;
+  background: var(--superficie, #fff);
+  color: var(--texto-pagina, #202031);
+  border: 4px solid var(--linha, #202031);
+  box-shadow: 8px 8px 0 #101123;
+  border-top: 8px solid var(--detalhes-cor, #4145bf);
+}
+.detalhes-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px 12px;
+}
+.detalhes-titulo,
+.detalhes-subtitulo { font-family: 'Pixel', monospace; }
+.detalhes-titulo { margin: 0; font-size: 16px; }
+.detalhes-fechar {
+  display: grid;
+  place-items: center;
+  min-width: 38px;
+  height: 38px;
+  border: 2px solid var(--linha, #202031);
+  color: inherit;
+  background: transparent;
+  font-size: 26px;
+  cursor: pointer;
+}
+.detalhes-conteudo, .detalhes-evolucoes { padding: 8px 24px 22px; }
+.detalhes-resumo {
+  display: grid;
+  grid-template-columns: minmax(150px, 230px) minmax(0, 1fr);
+  align-items: center;
+  gap: 26px;
+  padding: 14px;
+  border: 2px solid var(--linha, #202031);
+  background: color-mix(in srgb, var(--detalhes-cor, #4145bf) 10%, var(--superficie, #fff));
+}
+.detalhes-imagem { width: 100%; max-height: 225px; object-fit: contain; }
+.detalhes-numero { font-weight: 700; opacity: .75; }
+.detalhes-nome { font-size: 28px; margin: 4px 0 12px; overflow-wrap: anywhere; }
+.detalhes-tipos { display: flex; gap: 8px; flex-wrap: wrap; }
+.detalhes-medidas { display: flex; flex-wrap: wrap; gap: 25px; margin: 16px 0 0; }
+.detalhes-medida dt { font-weight: 600; opacity: .7; font-size: 13px; }
+.detalhes-medida dd { margin: 4px 0 0; font-weight: 700; }
+.detalhes-bloco { margin-top: 24px; }
+.detalhes-subtitulo { font-size: 13px; margin: 0 0 14px; }
+.detalhes-habilidades { display: flex; flex-wrap: wrap; gap: 8px; }
+.detalhes-habilidade {
+  padding: 7px 11px;
+  border: 1px solid var(--linha, #202031);
+  background: color-mix(in srgb, var(--detalhes-cor, #4145bf) 15%, var(--superficie, #fff));
+  border-radius: 6px;
+  font-weight: 600;
+}
+.detalhes-atributos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 25px; }
+.detalhes-atributo-topo { display: flex; justify-content: space-between; font-size: 13px; gap: 8px; }
+.detalhes-trilha { height: 9px; margin-top: 6px; background: color-mix(in srgb, var(--texto-pagina, #202031) 17%, transparent); border-radius: 10px; overflow: hidden; }
+.detalhes-preenchimento { height: 100%; background: var(--detalhes-cor, #4145bf); border-radius: 10px; }
+.detalhes-total { font-size: 13px; font-weight: 700; margin-bottom: 0; }
+.detalhes-evolucoes { border-top: 2px solid var(--linha, #202031); }
+.detalhes-lista-evolucoes { display: flex; gap: 12px; flex-wrap: wrap; }
+.detalhes-evolucao {
+  flex: 1 1 140px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px;
+  border: 2px solid var(--linha, #202031);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--detalhes-cor, #4145bf) 8%, var(--superficie, #fff));
+}
+.detalhes-evolucao-img { width: 95px; height: 95px; object-fit: contain; }
+.detalhes-evolucao-numero { font-size: 12px; opacity: .7; }
+.detalhes-evolucao-nome { overflow-wrap: anywhere; }
+.detalhes-evolucao-condicao { font-size: 12px; margin-top: 5px; opacity: .8; }
+.detalhes-aviso { margin: 0; padding: 16px; border: 1px dashed var(--linha, #202031); }
+.detalhes-erro { margin: 0; padding: 16px; color: #c00000; font-weight: 600; }
+@media (max-width: 560px) {
+  .detalhes-cabecalho { padding: 14px; }
+  .detalhes-conteudo, .detalhes-evolucoes { padding: 8px 14px 16px; }
+  .detalhes-resumo { grid-template-columns: 1fr; gap: 8px; }
+  .detalhes-imagem { max-height: 165px; }
+  .detalhes-nome { font-size: 23px; }
+  .detalhes-atributos { grid-template-columns: 1fr; }
+}
+
+/* botões compactos nas abas Buscar e Coleção!@ */
+.resultado .btn-ver-detalhes,
+.item-colecao .btn-ver-detalhes {
+  margin-top: 8px;
+  padding: 6px 8px;
+  font-size: 11px;
+}
+
+/* botão nos cards da equipe */
+.cartao-equipe .btn-ver-detalhes {
+  margin-top: 12px;
+}
+
+/* evita que o texto dos itens force o layout */
+.item-colecao .item-info {
+  min-width: 0;
+}
+
+/* mantém o modal acima do rodapé fixo, pra nao ter sobreposição */
+.detalhes-modal {
+  z-index: 10000;
+}
