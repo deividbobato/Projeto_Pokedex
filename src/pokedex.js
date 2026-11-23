@@ -220,6 +220,13 @@ function renderizarColecao() {
         <span class="item-numero">${formatarNumero(p.id)}</span>
         <h3 class="item-nome">${nomeBonito(p.name)}</h3>
         <div class="cartao-tipos">${htmlTipos(p)}</div>
+         <button
+    type="button"
+    class="btn-ver-detalhes"
+    data-detalhes-id="${p.id}"
+  >
+    VER DETALHES
+  </button>
       </div>
       <button type="button" class="btn-remover"
               data-remover-id="${p.id}"
@@ -302,6 +309,14 @@ function criarCartao(pokemon) {
       <span>${pokemon.height.toFixed(1)}m</span>
       <span>${pokemon.weight.toFixed(1)}kg</span>
     </div>
+
+    <button
+  type="button"
+  class="btn-ver-detalhes"
+  data-detalhes-id="${pokemon.id}"
+>
+  VER DETALHES
+</button>
   `;
   return cartao;
 }
@@ -565,6 +580,13 @@ function renderizarEquipe() {
       <img class="cartao-img" src="${p.image}" alt="${p.name}">
       <h3 class="cartao-nome">${nomeBonito(p.name)}</h3>
       <div class="cartao-tipos">${htmlTipos(p)}</div>
+      <button
+  type="button"
+  class="btn-ver-detalhes"
+  data-detalhes-id="${p.id}"
+>
+  VER DETALHES
+</button>
     `;
     lista.appendChild(cartao);
   });
@@ -719,6 +741,13 @@ function renderizarBusca() {
         <span class="resultado-numero">${formatarNumero(p.id)}</span>
         <h3 class="resultado-nome">${nomeBonito(p.name)}</h3>
         <div class="cartao-tipos">${htmlTipos(p)}</div>
+        <button
+    type="button"
+    class="btn-ver-detalhes"
+    data-detalhes-id="${p.id}"
+  >
+    VER DETALHES
+  </button>
       </div>
       <div class="resultado-stats">
         <span>HP ${p.stats.hp}</span>
