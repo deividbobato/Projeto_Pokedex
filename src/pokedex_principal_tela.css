@@ -12,7 +12,7 @@
   --linha: #202031;
 }
 
-:root[data-tema="escuro"] {
+:root[data-tema='escuro'] {
   --azul-1: #1a1f4d;
   --azul-2: #11153a;
   --fundo-pagina: #0c0f2b;
@@ -58,7 +58,7 @@ body.pokedex::before {
 }
 
 .logo-texto {
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 14px;
   letter-spacing: 0.5px;
   text-shadow: 2px 2px 0 var(--borda);
@@ -91,10 +91,7 @@ body.pokedex::before {
   border: 2px solid var(--borda);
   box-shadow: 2px 2px 0 var(--borda);
   cursor: pointer;
-  transition:
-    left 300ms ease,
-    top 300ms ease,
-    background-color 150ms ease;
+  transition: left 300ms ease, top 300ms ease, background-color 150ms ease;
 }
 
 .btn-filtros:hover {
@@ -123,10 +120,7 @@ body.pokedex::before {
   background: #1c1f4a;
   border-right: 4px solid var(--azul);
   color: #b9c0ee;
-  transition:
-    flex-basis 300ms ease,
-    border-width 300ms ease,
-    visibility 0s;
+  transition: flex-basis 300ms ease, border-width 300ms ease, visibility 0s;
 }
 
 .filtros > * {
@@ -138,9 +132,7 @@ body.pokedex::before {
   width: 0;
   border-right-width: 0;
   visibility: hidden;
-  transition:
-    flex-basis 300ms ease,
-    border-width 300ms ease,
+  transition: flex-basis 300ms ease, border-width 300ms ease,
     visibility 0s 300ms;
 }
 
@@ -176,7 +168,7 @@ body.pokedex::before {
   align-items: center;
   gap: 8px;
   margin: 0 0 6px;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 14px;
   font-weight: 400;
   color: #fff;
@@ -196,7 +188,7 @@ body.pokedex::before {
 
 .filtros-rotulo {
   margin: 0 0 12px;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 9px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -223,13 +215,11 @@ body.pokedex::before {
   border: 2px solid #3a3f78;
   border-radius: 0;
   color: #8a90c0;
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
-  transition:
-    background-color 150ms ease,
-    color 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
 .ordem .opcao {
@@ -282,7 +272,7 @@ body.pokedex::before {
   outline: 0;
   background: transparent;
   color: var(--borda);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 15px;
 }
 
@@ -347,17 +337,15 @@ body.pokedex::before {
   border: 0;
   border-bottom: 3px solid transparent;
   color: var(--texto-aba);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
-  transition:
-    background-color 150ms ease,
-    color 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease;
 }
 
-.aba[aria-selected="true"] {
+.aba[aria-selected='true'] {
   color: #fff;
   background: rgb(255 255 255 / 15%);
   border-bottom-color: var(--amarelo);
@@ -385,7 +373,7 @@ body.pokedex::before {
 
 .painel h2 {
   margin: 0 0 8px;
-  font-family: "PixelTitulo", monospace;
+  font-family: 'PixelTitulo', monospace;
   font-weight: 600;
 }
 
@@ -449,7 +437,7 @@ body.pokedex::before {
 
 .cartao-numero {
   align-self: flex-start;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 11px;
   color: var(--cor);
 }
@@ -462,7 +450,7 @@ body.pokedex::before {
 
 .cartao-nome {
   margin: 8px 0 6px;
-  font-family: "PixelTitulo", monospace;
+  font-family: 'PixelTitulo', monospace;
   font-size: 16px;
 }
 
@@ -478,7 +466,7 @@ body.pokedex::before {
   background: var(--cor);
   color: #fff;
   border: 2px solid var(--borda);
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 8px;
 }
 
@@ -514,7 +502,7 @@ body.pokedex::before {
 }
 
 .titulo-secao {
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 12px;
   letter-spacing: 1px;
   text-align: center;
@@ -593,11 +581,10 @@ body.pokedex::before {
 
 .colecao-vazio-titulo {
   margin: 0;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 13px;
   font-weight: 700;
   color: var(--texto-pagina);
-  
 }
 
 .colecao-vazio-icone svg {
@@ -607,16 +594,16 @@ body.pokedex::before {
 
 .colecao-vazio-subtitulo {
   margin: 0;
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 13px;
   color: #6f76a8;
 }
 
-:root[data-tema="escuro"] .colecao-vazio-icone {
+:root[data-tema='escuro'] .colecao-vazio-icone {
   color: #7c84b8;
 }
 
-:root[data-tema="escuro"] .colecao-vazio-subtitulo {
+:root[data-tema='escuro'] .colecao-vazio-subtitulo {
   color: #8f96c9;
 }
 
@@ -656,7 +643,7 @@ body.pokedex::before {
 
 .modal-titulo {
   margin: 12px 0 8px;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 12px;
 }
 
@@ -676,7 +663,7 @@ body.pokedex::before {
   height: 44px;
   border: 2px solid var(--borda);
   box-shadow: 3px 3px 0 var(--borda);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
@@ -748,7 +735,7 @@ body.pokedex::before {
 /* .painel h2 ja define fonte e margem; o seletor mais especifico garante o ajuste */
 .painel .equipe-titulo {
   margin: 0 0 6px;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -756,7 +743,7 @@ body.pokedex::before {
 
 .equipe-contador {
   margin: 0;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 10px;
   letter-spacing: 1px;
   opacity: 0.75;
@@ -769,7 +756,7 @@ body.pokedex::before {
   color: var(--borda);
   border: 2px solid var(--borda);
   box-shadow: 3px 3px 0 var(--borda);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
@@ -842,11 +829,8 @@ body.pokedex::before {
   border: 2px dashed #5d649c;
   color: #7c84b8;
   cursor: pointer;
-  transition:
-    border-color 150ms ease,
-    background-color 150ms ease,
-    color 150ms ease,
-    transform 150ms ease;
+  transition: border-color 150ms ease, background-color 150ms ease,
+    color 150ms ease, transform 150ms ease;
 }
 
 .slot-equipe-vazio:hover {
@@ -862,14 +846,14 @@ body.pokedex::before {
 }
 
 .slot-equipe-mais {
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 26px;
   font-weight: 400;
   line-height: 1;
 }
 
 .slot-equipe-rotulo {
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 9px;
   letter-spacing: 0.8px;
 }
@@ -889,7 +873,6 @@ body.pokedex::before {
     min-height: 160px;
   }
 }
-
 
 /* ---------- Seletor de Pokemon ---------- */
 
@@ -917,7 +900,7 @@ body.pokedex::before {
 
 .seletor-titulo {
   margin: 0;
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 12px;
   font-weight: 400;
 }
@@ -948,7 +931,7 @@ body.pokedex::before {
   color: var(--borda);
   border: 2px solid var(--borda);
   box-shadow: 3px 3px 0 var(--borda);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 14px;
   outline: 0;
 }
@@ -979,14 +962,14 @@ body.pokedex::before {
 }
 
 #seletor-lista .item-numero {
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 10px;
   color: var(--cor);
 }
 
 #seletor-lista .item-nome {
   margin: 4px 0 6px;
-  font-family: "PixelTitulo", monospace;
+  font-family: 'PixelTitulo', monospace;
   font-size: 14px;
 }
 
@@ -1002,7 +985,7 @@ body.pokedex::before {
   color: #fff;
   border: 2px solid var(--borda);
   box-shadow: 2px 2px 0 var(--borda);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
@@ -1034,9 +1017,7 @@ body.pokedex::before {
 
 body.pokedex,
 .cabecalho {
-  transition:
-    background-color 250ms ease,
-    color 250ms ease;
+  transition: background-color 250ms ease, color 250ms ease;
 }
 
 .btn-icone {
@@ -1057,7 +1038,7 @@ body.pokedex,
   background: var(--amarelo);
   color: var(--borda);
   border: 2px solid var(--borda);
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 8px;
   line-height: 1.2;
   text-align: center;
@@ -1129,7 +1110,7 @@ body.pokedex,
   outline: 0;
   background: transparent;
   color: var(--borda);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
 }
@@ -1155,7 +1136,7 @@ body.pokedex,
   color: var(--borda);
   border: 2px solid var(--borda);
   box-shadow: 2px 2px 0 var(--borda);
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
@@ -1195,13 +1176,11 @@ body.pokedex,
   box-shadow: 4px 4px 0 var(--borda);
 }
 
-:root[data-tema="escuro"] .resultado {
+:root[data-tema='escuro'] .resultado {
   background: var(--superficie);
   color: var(--texto-pagina);
   border-color: #6c74d9; /* borda de destaque no modo noite */
-  box-shadow:
-    4px 4px 0 #090b20,
-    0 0 0 1px rgb(155 164 255 / 35%); /* realce sutil na borda */
+  box-shadow: 4px 4px 0 #090b20, 0 0 0 1px rgb(155 164 255 / 35%); /* realce sutil na borda */
 }
 
 .resultado-img {
@@ -1220,14 +1199,14 @@ body.pokedex,
 }
 
 .resultado-numero {
-  font-family: "Pixel", monospace;
+  font-family: 'Pixel', monospace;
   font-size: 10px;
   color: var(--cor);
 }
 
 .resultado-nome {
   margin: 4px 0 6px;
-  font-family: "PixelTitulo", monospace;
+  font-family: 'PixelTitulo', monospace;
   font-size: 15px;
 }
 
@@ -1318,7 +1297,7 @@ body.pokedex,
 }
 
 .aba-rodape.ativa::after {
-  content: "";
+  content: '';
   width: 5px;
   height: 5px;
   background: #ffcc00;
@@ -1337,56 +1316,132 @@ body {
 
 /* ===== PokéAPI: loading, erro e carregar mais ===== */
 .status {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 16px;
-    padding: 12px;
-    background: #fff;
-    color: var(--borda);
-    font-weight: 700;
-    border: 3px solid var(--borda);
-    box-shadow: 4px 4px 0 var(--borda);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #fff;
+  color: var(--borda);
+  font-weight: 700;
+  border: 3px solid var(--borda);
+  box-shadow: 4px 4px 0 var(--borda);
 }
 
 .status.erro {
-    background: #fdeaea;
-    color: #c00000;
+  background: #fdeaea;
+  color: #c00000;
 }
 
 .status button,
 .btn-mais {
-    padding: 10px 18px;
-    background: var(--amarelo);
-    color: var(--borda);
-    border: 2px solid var(--borda);
-    box-shadow: 3px 3px 0 var(--borda);
-    font-family: "Pixel", monospace;
-    font-size: 11px;
-    cursor: pointer;
+  padding: 10px 18px;
+  background: var(--amarelo);
+  color: var(--borda);
+  border: 2px solid var(--borda);
+  box-shadow: 3px 3px 0 var(--borda);
+  font-family: 'Pixel', monospace;
+  font-size: 11px;
+  cursor: pointer;
 }
 
 .status button:active,
 .btn-mais:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0 var(--borda);
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--borda);
 }
 
 .btn-mais {
-    display: block;
-    margin: 24px auto 0;
+  display: block;
+  margin: 24px auto 0;
 }
 
 .spinner {
-    width: 18px;
-    height: 18px;
-    border: 3px solid #cfd2f5;
-    border-top-color: var(--azul);
-    border-radius: 50%;
-    animation: girar 0.8s linear infinite;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #cfd2f5;
+  border-top-color: var(--azul);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
 }
 
 @keyframes girar {
-    to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   BOTAO DE EQUIPE NOS CARTOES E AVISO RAPIDO
+   ============================================================ */
+
+/* ---------- Botao redondo nos cartoes da Pokedex ---------- */
+/* Fica ao lado da pokebola de captura (36px de largura a 10px da borda) */
+
+.btn-equipe-card {
+  position: absolute;
+  top: 54px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: #fff;
+  color: #666;
+  border: 2px solid #202031;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.btn-equipe-card:hover {
+  transform: scale(1.1);
+}
+
+.btn-equipe-card:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+}
+
+/* Pokemon que ja esta na equipe (como o verde da pokebola capturada) */
+.btn-equipe-card.na-equipe {
+  background: var(--amarelo);
+  color: var(--borda);
+}
+
+/* Na aba Buscar o botao fica na linha do resultado, com cantos retos */
+.resultado .btn-equipe-card {
+  position: static;
+  flex-shrink: 0;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 var(--borda);
+}
+
+/* ---------- Aviso rapido ---------- */
+/* z-index acima dos modais e do rodape; bottom deixa o aviso acima do rodape (64px) */
+.toast-equipe {
+  position: fixed;
+  left: 50%;
+  bottom: 84px;
+  transform: translateX(-50%);
+  z-index: 20000;
+  max-width: min(92vw, 420px);
+  padding: 12px 16px;
+  background: #fff;
+  color: var(--borda);
+  border: 3px solid var(--borda);
+  box-shadow: 4px 4px 0 var(--borda);
+  font-family: 'PixelTitulo', monospace;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.toast-equipe.ok {
+  border-left: 10px solid #2e9e4f;
+}
+
+.toast-equipe.aviso {
+  background: #fff3b0;
+  border-left: 10px solid #d4a017;
 }
