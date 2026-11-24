@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
@@ -430,42 +430,66 @@
           </div>
         </div>
       </div>
+      <!-- Modal de confirmação para remover da equipe -->
+      <div class="modal" id="modal-remover-equipe" hidden>
+        <img id="modal-equipe-img" src="" alt="" />
 
-<!-- modal de detalhes -->
-<div class="modal detalhes-modal" id="modal-detalhes" hidden>
-  <section
-    class="detalhes-janela"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="detalhes-titulo"
-    tabindex="-1"
-  >
-    <header class="detalhes-cabecalho">
-      <h2 class="detalhes-titulo" id="detalhes-titulo">
-        DETALHES DO POKÉMON
-      </h2>
+        <div
+          class="modal-caixa"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-equipe-titulo"
+        >
+          <h3 id="modal-equipe-titulo" class="modal-titulo">
+            REMOVER DA EQUIPE?
+          </h3>
 
-      <button
-        type="button"
-        class="detalhes-fechar"
-        id="detalhes-fechar"
-        aria-label="Fechar detalhes"
-      >
-        &times;
-      </button>
-    </header>
+          <p id="modal-equipe-texto" class="modal-texto"></p>
 
-    <div id="detalhes-conteudo" class="detalhes-conteudo"></div>
+          <div class="modal-botoes">
+            <button type="button" id="modal-equipe-nao" class="btn-nao">
+              NÃO
+            </button>
 
-    <section class="detalhes-evolucoes">
-      <h3 class="detalhes-subtitulo">
-        FAMÍLIA EVOLUTIVA
-      </h3>
+            <button type="button" id="modal-equipe-sim" class="btn-sim">
+              SIM, REMOVER
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- modal de detalhes -->
+      <div class="modal detalhes-modal" id="modal-detalhes" hidden>
+        <section
+          class="detalhes-janela"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="detalhes-titulo"
+          tabindex="-1"
+        >
+          <header class="detalhes-cabecalho">
+            <h2 class="detalhes-titulo" id="detalhes-titulo">
+              DETALHES DO POKÉMON
+            </h2>
 
-      <div id="detalhes-evolucao" role="status"></div>
-    </section>
-  </section>
-</div>
+            <button
+              type="button"
+              class="detalhes-fechar"
+              id="detalhes-fechar"
+              aria-label="Fechar detalhes"
+            >
+              &times;
+            </button>
+          </header>
+
+          <div id="detalhes-conteudo" class="detalhes-conteudo"></div>
+
+          <section class="detalhes-evolucoes">
+            <h3 class="detalhes-subtitulo">FAMÍLIA EVOLUTIVA</h3>
+
+            <div id="detalhes-evolucao" role="status"></div>
+          </section>
+        </section>
+      </div>
 
       <script src="api.js"></script>
       <script src="pokedex.js"></script>
