@@ -98,6 +98,7 @@ body.pokedex::before {
   box-shadow: 2px 2px 0 var(--borda);
   cursor: pointer;
   transition:
+    margin 300ms ease,
     left 300ms ease,
     top 300ms ease,
     background-color 150ms ease;
@@ -119,6 +120,7 @@ body.pokedex::before {
 
 .layout-pokedex.filtros-fechados .btn-filtros {
   top: 14px;
+  margin-top: 14px;
   margin-left: 14px;
   margin-right: -46px;
 }
@@ -126,11 +128,18 @@ body.pokedex::before {
 .filtros {
   flex: 0 0 268px;
   min-width: 0;
-  overflow-x: hidden;            /* mantém a animação de fechar */
-  overflow-y: auto;              /* rola por dentro se for maior que a tela */
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #1c1f4a;
   border-right: 4px solid var(--azul);
   color: #b9c0ee;
+
+  /* estas 4 linhas estavam faltando */
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: calc(100vh - 64px);
+
   transition:
     flex-basis 300ms ease,
     border-width 300ms ease,
@@ -392,6 +401,10 @@ body.pokedex::before {
 }
 
 @media (max-width: 800px) {
+  .layout-pokedex {
+    flex-direction: column;
+  }
+
   .btn-filtros,
   .layout-pokedex.filtros-fechados .btn-filtros {
     position: absolute;
@@ -400,9 +413,14 @@ body.pokedex::before {
     top: 19px;
   }
 
+  .layout-pokedex.filtros-fechados .btn-filtros {
+    left: 14px;
+    top: 14px;
+  }
+
   .filtros {
     flex: none;
-    position: static;     /* volta ao normal no celular */
+    position: static;
     height: auto;
     overflow-y: visible;
     border-right: 0;
@@ -410,8 +428,7 @@ body.pokedex::before {
   }
 
   .layout-pokedex.filtros-fechados .filtros {
-    left: 14px;
-    top: 14px;
+    display: none;
   }
 }
 
