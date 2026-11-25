@@ -714,15 +714,10 @@ body.pokedex::before {
   min-width: 0;
 }
 
-/* ============================================================
-   ABA EQUIPE
-   ============================================================ */
-
 #painel-equipe {
   max-width: none;
 }
 
-/* Cabecalho: titulo e contador a esquerda, botao a direita */
 .equipe-topo {
   display: flex;
   align-items: center;
@@ -732,7 +727,6 @@ body.pokedex::before {
   margin-bottom: 16px;
 }
 
-/* .painel h2 ja define fonte e margem; o seletor mais especifico garante o ajuste */
 .painel .equipe-titulo {
   margin: 0 0 6px;
   font-family: 'Pixel', monospace;
@@ -785,7 +779,6 @@ body.pokedex::before {
   outline-offset: 2px;
 }
 
-/* Aviso de limite atingido (aba e seletor) */
 .equipe-aviso {
   margin: 0 0 16px;
   padding: 10px 14px;
@@ -797,7 +790,6 @@ body.pokedex::before {
   font-weight: 700;
 }
 
-/* Grade de 6 slots iguais na aba Equipe */
 #lista-equipe {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -874,9 +866,6 @@ body.pokedex::before {
   }
 }
 
-/* ---------- Seletor de Pokemon ---------- */
-
-/* O fundo escuro vem da classe .modal ja existente */
 .seletor-caixa {
   flex-shrink: 0;
   display: flex;
@@ -940,14 +929,13 @@ body.pokedex::before {
   box-shadow: 3px 3px 0 var(--amarelo);
 }
 
-/* A lista rola dentro da caixa, sem rolar a pagina inteira */
 #seletor-lista {
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-height: 0;
   overflow-y: auto;
-  /* espaco para a sombra dos itens nao ser cortada */
+
   padding: 0 6px 6px 0;
 }
 
@@ -955,7 +943,6 @@ body.pokedex::before {
   flex-shrink: 0;
 }
 
-/* Estes textos nao tinham estilo na Colecao; ficam restritos ao seletor */
 #seletor-lista .item-info {
   flex: 1;
   min-width: 0;
@@ -1000,7 +987,6 @@ body.pokedex::before {
   box-shadow: 1px 1px 0 var(--borda);
 }
 
-/* Telas pequenas: botao do seletor ocupa a linha de baixo do item */
 @media (max-width: 480px) {
   .btn-equipe-adicionar {
     width: 100%;
@@ -1314,7 +1300,6 @@ body {
   padding-bottom: 64px;
 }
 
-/* ===== PokéAPI: loading, erro e carregar mais ===== */
 .status {
   display: flex;
   align-items: center;
@@ -1372,13 +1357,6 @@ body {
   }
 }
 
-/* ============================================================
-   BOTAO DE EQUIPE NOS CARTOES E AVISO RAPIDO
-   ============================================================ */
-
-/* ---------- Botao redondo nos cartoes da Pokedex ---------- */
-/* Fica ao lado da pokebola de captura (36px de largura a 10px da borda) */
-
 .btn-equipe-card {
   position: absolute;
   top: 54px;
@@ -1403,13 +1381,11 @@ body {
   outline-offset: 2px;
 }
 
-/* Pokemon que ja esta na equipe (como o verde da pokebola capturada) */
 .btn-equipe-card.na-equipe {
   background: var(--amarelo);
   color: var(--borda);
 }
 
-/* Na aba Buscar o botao fica na linha do resultado, com cantos retos */
 .resultado .btn-equipe-card {
   position: static;
   flex-shrink: 0;
@@ -1417,8 +1393,6 @@ body {
   box-shadow: 2px 2px 0 var(--borda);
 }
 
-/* ---------- Aviso rapido ---------- */
-/* z-index acima dos modais e do rodape; bottom deixa o aviso acima do rodape (64px) */
 .toast-equipe {
   position: fixed;
   left: 50%;
@@ -1444,4 +1418,95 @@ body {
 .toast-equipe.aviso {
   background: #fff3b0;
   border-left: 10px solid #d4a017;
+}
+
+.aba,
+.aba-rodape span,
+.opcao,
+.chip,
+.contador,
+.btn-ver-detalhes,
+.btn-equipe-adicionar,
+.btn-seletor-adicionar,
+.modal-botoes button {
+  font-family: 'Pixel', monospace;
+}
+
+.item-colecao .item-numero {
+  font-family: 'Pixel', monospace;
+}
+
+.item-colecao .item-nome {
+  font-family: 'PixelTitulo', monospace;
+}
+
+.cartao-hp span:first-child {
+  font-family: 'Pixel', monospace;
+}
+
+.aba {
+  font-size: 11px;
+}
+
+.aba-rodape span {
+  font-size: 9px;
+}
+
+.painel .filtros-titulo {
+  font-size: 12px;
+}
+
+.filtros-rotulo {
+  font-size: 9px;
+}
+
+.contador {
+  font-size: 10px;
+}
+
+.opcao {
+  font-size: 10px;
+}
+
+.ordem .opcao {
+  font-size: 11px;
+}
+
+.chip {
+  font-size: 10px;
+}
+
+/* Botões */
+.btn-ver-detalhes {
+  font-size: 10px;
+}
+
+.btn-equipe-adicionar {
+  font-size: 11px;
+}
+
+.btn-seletor-adicionar {
+  font-size: 10px;
+}
+
+.modal-botoes button {
+  font-size: 11px;
+}
+
+.colecao-vazio-subtitulo {
+  font-family: 'Pixel', monospace;
+  font-size: 10px;
+}
+
+.equipe-vazio-titulo {
+  margin: 0 0 8px;
+  font-family: 'PixelTitulo', monospace;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.equipe-vazio > p:not(.equipe-vazio-titulo) {
+  font-family: 'Pixel', monospace;
+  font-size: 10px;
+  line-height: 1.6;
 }
